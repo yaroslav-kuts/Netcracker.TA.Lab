@@ -51,7 +51,7 @@ public class ExcelReaderTest {
 		reader = new ExcelReader("src/test/resources/data.xlsx", "test_data");
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = IndexOutOfBoundsException.class)
 	public void minusIndexPassInGetCell() {
 		reader.getCellValue(-1, 1);
 	}
