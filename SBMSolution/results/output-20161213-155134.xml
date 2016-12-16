@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:51:34.206" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="CreatePayBoxTest">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:35.904" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:51:41.727" starttime="20161213 15:51:35.902"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:41.733" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:51:41.860" starttime="20161213 15:51:41.731"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:41.862" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:51:42.148" starttime="20161213 15:51:41.861"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:42.155" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:51:42.404" starttime="20161213 15:51:42.151"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:42.406" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:51:43.085" starttime="20161213 15:51:42.405"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:51:43.086" starttime="20161213 15:51:41.729"></status>
+</kw>
+<kw name="Go To Pay Box Tab" library="Project_Keywords">
+<arguments>
+<arg>${COUNTRY_NAME}</arg>
+<arg>${CITY_NAME}</arg>
+<arg>${BUILDING_NAME}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${INVENTORY_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:43.092" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml?id=2'</msg>
+<status status="PASS" endtime="20161213 15:51:44.308" starttime="20161213 15:51:43.091"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${COUNTRY_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:51:44.311" level="INFO">Clicking link 'xpath=//*[contains(text(), 'Canada')]'.</msg>
+<status status="PASS" endtime="20161213 15:51:45.244" starttime="20161213 15:51:44.310"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${CITY_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:51:45.247" level="INFO">Clicking link 'xpath=//*[contains(text(), 'Toronto')]'.</msg>
+<status status="PASS" endtime="20161213 15:51:45.824" starttime="20161213 15:51:45.245"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${BUILDING_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:51:45.826" level="INFO">Clicking link 'xpath=//*[contains(text(), 'CentralMarket')]'.</msg>
+<status status="PASS" endtime="20161213 15:51:46.454" starttime="20161213 15:51:45.825"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${PAY_BOXES_TAB}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:46.458" level="INFO">Clicking link 'xpath=//*[@id="j_idt76:tabView"]/ul/li[5]/a'.</msg>
+<status status="PASS" endtime="20161213 15:51:46.647" starttime="20161213 15:51:46.456"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<doc>Sets current browser's implicit wait in seconds.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20161213 15:51:46.656" starttime="20161213 15:51:46.648"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:51:46.656" starttime="20161213 15:51:43.088"></status>
+</kw>
+<kw name="Create Pay Box" library="Project_Keywords">
+<arguments>
+<arg>${PAY_BOX_NAME}</arg>
+<arg>${PAY_BOX_SECURE_PROTOCOL}</arg>
+<arg>${PAY_BOX_DISPLAY_SIZE}</arg>
+<arg>${PAY_BOX_PHYSICAL_STATUS}</arg>
+</arguments>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${CREATE_PAY_BOX_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:46.660" level="INFO">Clicking link 'link=Create Pay Box'.</msg>
+<status status="PASS" endtime="20161213 15:51:47.194" starttime="20161213 15:51:46.659"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PAY_BOX_NAME_FIELD}</arg>
+<arg>${PAY_BOX_NAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:47.196" level="INFO">Typing text 'terminal#5' into text field 'id=j_idt74:name'</msg>
+<status status="PASS" endtime="20161213 15:51:47.438" starttime="20161213 15:51:47.195"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PAY_BOX_SECURE_PROTOCOL_FIELD}</arg>
+<arg>${PAY_BOX_SECURE_PROTOCOL}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:47.439" level="INFO">Typing text 'SSH' into text field 'id=j_idt74:secureProtocol'</msg>
+<status status="PASS" endtime="20161213 15:51:47.603" starttime="20161213 15:51:47.438"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PAY_BOX_DISPLAY_SIZE_FIELD}</arg>
+<arg>${PAY_BOX_DISPLAY_SIZE}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:47.605" level="INFO">Typing text '18' into text field 'id=j_idt74:displaySize'</msg>
+<status status="PASS" endtime="20161213 15:51:47.759" starttime="20161213 15:51:47.604"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>${PAY_BOX_PHYSICAL_STATUS_LIST}</arg>
+<arg>${PAY_BOX_PHYSICAL_STATUS}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:47.761" level="INFO">Selecting value(s) 'In Service' from list 'id=j_idt74:physicalStatus'.</msg>
+<status status="PASS" endtime="20161213 15:51:47.950" starttime="20161213 15:51:47.760"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${PAY_BOX_LOCATED_IN_SELECT_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:47.952" level="INFO">Clicking link 'xpath=//*[@id="table_data"]/table/tbody/tr[5]/td/a[1]'.</msg>
+<status status="PASS" endtime="20161213 15:51:48.169" starttime="20161213 15:51:47.951"></status>
+</kw>
+<kw name="Choose From Navigation Tree" library="Project_Keywords">
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<arguments>
+<arg>title=Navigation Tree</arg>
+</arguments>
+<status status="PASS" endtime="20161213 15:51:49.572" starttime="20161213 15:51:48.172"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${COUNTRY_BRANCH}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:49.574" level="INFO">Clicking link 'xpath=//*[@id="form:treeSingle:0"]/span/span[3]/a'.</msg>
+<status status="PASS" endtime="20161213 15:51:49.715" starttime="20161213 15:51:49.573"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${OK_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:49.716" level="INFO">Clicking button 'id=OK'.</msg>
+<status status="PASS" endtime="20161213 15:51:49.957" starttime="20161213 15:51:49.716"></status>
+</kw>
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<status status="PASS" endtime="20161213 15:51:50.009" starttime="20161213 15:51:49.958"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:51:50.009" starttime="20161213 15:51:48.171"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${PAY_BOX_SAVE_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 15:51:50.011" level="INFO">Clicking button 'name=j_idt74:j_idt76'.</msg>
+<status status="PASS" endtime="20161213 15:51:50.559" starttime="20161213 15:51:50.010"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:51:50.560" starttime="20161213 15:51:46.657"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161213 15:51:53.607" starttime="20161213 15:51:50.561"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:51:53.607" critical="yes" starttime="20161213 15:51:35.899"></status>
+</test>
+<status status="PASS" endtime="20161213 15:51:53.611" starttime="20161213 15:51:35.348"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:51:53.619" starttime="20161213 15:51:35.340"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:51:53.625" starttime="20161213 15:51:35.249"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SBMSolution" pass="1">SBMSolution</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">SBMSolution.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="WebTest" pass="1">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

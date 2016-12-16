@@ -1,0 +1,4 @@
+*** Variables ***
+${OK_BUTTON}      id=OK
+${CANCEL_BUTTON}    id=Cancel
+${COUNTRY_BRANCH}    xpath=//*[@id="form:treeSingle:0"]/span/span[3]/a

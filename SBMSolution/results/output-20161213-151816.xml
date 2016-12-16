@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:18:16.551" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="LogoutTest">
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:18:17.145" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:18:24.318" starttime="20161213 15:18:17.143"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:18:24.322" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:18:24.586" starttime="20161213 15:18:24.320"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:18:24.590" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:18:24.876" starttime="20161213 15:18:24.588"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:18:24.880" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:18:26.181" starttime="20161213 15:18:24.878"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:18:26.184" starttime="20161213 15:18:17.141"></status>
+</kw>
+<kw name="Logout" library="Project_Keywords">
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${LOGOUT_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:18:26.192" level="INFO">Clicking link 'xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[4]/a'.</msg>
+<status status="PASS" endtime="20161213 15:18:26.767" starttime="20161213 15:18:26.190"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:18:26.770" starttime="20161213 15:18:26.187"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161213 15:18:29.924" starttime="20161213 15:18:26.772"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:18:29.925" critical="yes" starttime="20161213 15:18:17.138"></status>
+</test>
+<status status="PASS" endtime="20161213 15:18:29.929" starttime="20161213 15:18:16.666"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:18:29.938" starttime="20161213 15:18:16.658"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:18:29.946" starttime="20161213 15:18:16.584"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SBMSolution" pass="1">SBMSolution</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">SBMSolution.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="WebTest" pass="1">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

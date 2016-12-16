@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:34:45.630" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="CreateDeviceTest">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:47.343" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:34:54.292" starttime="20161213 15:34:47.341"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:54.296" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:34:54.455" starttime="20161213 15:34:54.295"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:54.457" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:34:54.695" starttime="20161213 15:34:54.456"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:54.696" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:34:54.926" starttime="20161213 15:34:54.695"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:54.928" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:34:55.890" starttime="20161213 15:34:54.927"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:34:55.891" starttime="20161213 15:34:54.293"></status>
+</kw>
+<kw name="Go To Device Tab" library="Project_Keywords">
+<arguments>
+<arg>${COUNTRY_NAME}</arg>
+<arg>${CITY_NAME}</arg>
+<arg>${BUILDING_NAME}</arg>
+<arg>${FLOOR_NUMBER}</arg>
+<arg>${ROOM_NAME}</arg>
+<arg>${RACK_NAME}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${INVENTORY_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:34:55.895" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml?id=2'</msg>
+<status status="PASS" endtime="20161213 15:34:57.806" starttime="20161213 15:34:55.894"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${COUNTRY_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:34:57.807" level="INFO">Clicking link 'xpath=//*[contains(text(), 'Canada')]'.</msg>
+<status status="PASS" endtime="20161213 15:34:58.846" starttime="20161213 15:34:57.806"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${CITY_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:34:58.847" level="INFO">Clicking link 'xpath=//*[contains(text(), 'Toronto')]'.</msg>
+<status status="PASS" endtime="20161213 15:34:59.383" starttime="20161213 15:34:58.847"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${BUILDING_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:34:59.385" level="INFO">Clicking link 'xpath=//*[contains(text(), 'CentralMarket')]'.</msg>
+<status status="PASS" endtime="20161213 15:34:59.988" starttime="20161213 15:34:59.384"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), 'Floor#${FLOOR_NUMBER}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:34:59.989" level="INFO">Clicking link 'xpath=//*[contains(text(), 'Floor#2')]'.</msg>
+<status status="PASS" endtime="20161213 15:35:00.901" starttime="20161213 15:34:59.989"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${ROOM_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:35:00.904" level="INFO">Clicking link 'xpath=//*[contains(text(), 'hall')]'.</msg>
+<status status="PASS" endtime="20161213 15:35:01.610" starttime="20161213 15:35:00.903"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>xpath=//*[contains(text(), '${RACK_NAME}')]</arg>
+</arguments>
+<msg timestamp="20161213 15:35:01.613" level="INFO">Clicking link 'xpath=//*[contains(text(), 'rack#1')]'.</msg>
+<status status="PASS" endtime="20161213 15:35:02.426" starttime="20161213 15:35:01.611"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<doc>Sets current browser's implicit wait in seconds.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<status status="PASS" endtime="20161213 15:35:02.452" starttime="20161213 15:35:02.427"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:35:02.453" starttime="20161213 15:34:55.891"></status>
+</kw>
+<kw name="Create Device" library="Project_Keywords">
+<arguments>
+<arg>${DEVICE_NAME}</arg>
+<arg>${DEVICE_MAC_ADDRESS}</arg>
+<arg>${DEVICE_RAM}</arg>
+<arg>${DEVICE_CPU}</arg>
+<arg>${DEVICE_IP_ADDRESS}</arg>
+<arg>${DEVICE_PHYSICAL_STATUS}</arg>
+<arg>${DEVICE_WIDTH}</arg>
+<arg>${DEVICE_LENGTH}</arg>
+<arg>${DEVICE_HEIGHT}</arg>
+</arguments>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${CREATE_DEVICE_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:02.458" level="INFO">Clicking link 'xpath=//*[@id="table_header"]/table/tbody/tr/td[1]/a'.</msg>
+<status status="PASS" endtime="20161213 15:35:03.521" starttime="20161213 15:35:02.457"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_NAME_FIELD}</arg>
+<arg>${DEVICE_NAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:03.524" level="INFO">Typing text 'server#1' into text field 'id=j_idt74:name'</msg>
+<status status="PASS" endtime="20161213 15:35:03.778" starttime="20161213 15:35:03.522"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_MAC_ADDRESS_FIELD}</arg>
+<arg>${DEVICE_MAC_ADDRESS}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:03.781" level="INFO">Typing text '12:12:12:12:12:12' into text field 'id=j_idt74:macAddress'</msg>
+<status status="PASS" endtime="20161213 15:35:04.118" starttime="20161213 15:35:03.780"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_RAM_FIELD}</arg>
+<arg>${DEVICE_RAM}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:04.120" level="INFO">Typing text '2048' into text field 'id=j_idt74:ram'</msg>
+<status status="PASS" endtime="20161213 15:35:04.324" starttime="20161213 15:35:04.119"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_CPU_FIELD}</arg>
+<arg>${DEVICE_CPU}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:04.327" level="INFO">Typing text '2' into text field 'id=j_idt74:cpu'</msg>
+<status status="PASS" endtime="20161213 15:35:04.630" starttime="20161213 15:35:04.325"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_IP_ADDRESS_FIELD}</arg>
+<arg>${DEVICE_IP_ADDRESS}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:04.633" level="INFO">Typing text '177.128.128.5' into text field 'id=j_idt74:ipAddress'</msg>
+<status status="PASS" endtime="20161213 15:35:04.912" starttime="20161213 15:35:04.631"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>${DEVICE_PHYSICAL_STATUS_LIST}</arg>
+<arg>${DEVICE_PHYSICAL_STATUS}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:04.914" level="INFO">Selecting value(s) 'In Service' from list 'id=j_idt74:physicalStatus'.</msg>
+<status status="PASS" endtime="20161213 15:35:05.105" starttime="20161213 15:35:04.913"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_WIDTH_FIELD}</arg>
+<arg>${DEVICE_WIDTH}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:05.108" level="INFO">Typing text '1' into text field 'id=j_idt74:width'</msg>
+<status status="PASS" endtime="20161213 15:35:05.255" starttime="20161213 15:35:05.107"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_LENGTH_FIELD}</arg>
+<arg>${DEVICE_LENGTH}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:05.257" level="INFO">Typing text '1' into text field 'id=j_idt74:length'</msg>
+<status status="PASS" endtime="20161213 15:35:05.406" starttime="20161213 15:35:05.256"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_HEIGHT_FIELD}</arg>
+<arg>${DEVICE_HEIGHT}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:05.409" level="INFO">Typing text '1' into text field 'id=j_idt74:height'</msg>
+<status status="PASS" endtime="20161213 15:35:05.563" starttime="20161213 15:35:05.407"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${DEVICE_LOCATED_IN_SELECT_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:05.565" level="INFO">Clicking link 'xpath=//*[@id="table_data"]/table/tbody/tr[10]/td/a[1]'.</msg>
+<status status="PASS" endtime="20161213 15:35:05.943" starttime="20161213 15:35:05.564"></status>
+</kw>
+<kw name="Choose From Navigation Tree" library="Project_Keywords">
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<arguments>
+<arg>title=Navigation Tree</arg>
+</arguments>
+<status status="PASS" endtime="20161213 15:35:07.349" starttime="20161213 15:35:05.949"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${COUNTRY_BRANCH}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:07.353" level="INFO">Clicking link 'xpath=//*[@id="form:treeSingle:0"]/span/span[3]/a'.</msg>
+<status status="PASS" endtime="20161213 15:35:07.563" starttime="20161213 15:35:07.352"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${OK_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:07.565" level="INFO">Clicking button 'id=OK'.</msg>
+<status status="PASS" endtime="20161213 15:35:07.792" starttime="20161213 15:35:07.564"></status>
+</kw>
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<status status="PASS" endtime="20161213 15:35:07.871" starttime="20161213 15:35:07.794"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:35:07.872" starttime="20161213 15:35:05.945"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${DEVICE_NETWORK_ELEMENT_SELECT_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:07.876" level="INFO">Clicking link 'xpath=//*[@id="table_data"]/table/tbody/tr[11]/td/a[1]'.</msg>
+<status status="PASS" endtime="20161213 15:35:08.228" starttime="20161213 15:35:07.874"></status>
+</kw>
+<kw name="Choose From Navigation Tree" library="Project_Keywords">
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<arguments>
+<arg>title=Navigation Tree</arg>
+</arguments>
+<status status="PASS" endtime="20161213 15:35:09.353" starttime="20161213 15:35:08.231"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${COUNTRY_BRANCH}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:09.356" level="INFO">Clicking link 'xpath=//*[@id="form:treeSingle:0"]/span/span[3]/a'.</msg>
+<status status="PASS" endtime="20161213 15:35:09.528" starttime="20161213 15:35:09.354"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${OK_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:09.531" level="INFO">Clicking button 'id=OK'.</msg>
+<status status="PASS" endtime="20161213 15:35:09.906" starttime="20161213 15:35:09.529"></status>
+</kw>
+<kw name="Select Window" library="Selenium2Library">
+<doc>Selects the window matching locator and return previous window handle.</doc>
+<status status="PASS" endtime="20161213 15:35:09.926" starttime="20161213 15:35:09.908"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:35:09.927" starttime="20161213 15:35:08.230"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${DEVICE_SAVE_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 15:35:09.929" level="INFO">Clicking button 'name=j_idt74:j_idt76'.</msg>
+<status status="PASS" endtime="20161213 15:35:10.985" starttime="20161213 15:35:09.928"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:35:10.987" starttime="20161213 15:35:02.454"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161213 15:35:14.162" starttime="20161213 15:35:10.989"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:35:14.162" critical="yes" starttime="20161213 15:34:47.338"></status>
+</test>
+<status status="PASS" endtime="20161213 15:35:14.166" starttime="20161213 15:34:46.786"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:35:14.174" starttime="20161213 15:34:46.778"></status>
+</suite>
+<status status="PASS" endtime="20161213 15:35:14.180" starttime="20161213 15:34:46.685"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SBMSolution" pass="1">SBMSolution</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">SBMSolution.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="WebTest" pass="1">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

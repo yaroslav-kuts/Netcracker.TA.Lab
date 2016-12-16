@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0 (Jython 2.7.0 on java1.8.0_20)" generated="20161215 12:31:23.581">
+<suite source="C:\Projects\SBMSolution" name="SBMSolution" id="s1">
+<suite source="C:\Projects\SBMSolution\tests" name="Tests" id="s1-s1">
+<errors>
+<msg level="ERROR" timestamp="20161215 12:31:33.580">Unexpected error: NoClassDefFoundError: org/apache/poi/openxml4j/exceptions/InvalidFormatException
+java.lang.NoClassDefFoundError: 
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:340)
+	at robot.utils.importer$py.import_$32(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py:269)
+	at robot.utils.importer$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py)
+	at robot.utils.importer$py._import_class_or_module$5(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py:75)
+	at robot.utils.importer$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py)
+	at robot.utils.importer$py.import_class_or_module$4(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py:72)
+	at robot.utils.importer$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\utils\importer.py)
+	at robot.model.visitor$py.visit_suite$2(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$10(C:\jython2.7.0\Lib\site-packages\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py)
+	at robot.model.itemlist$py.visit$10(C:\jython2.7.0\Lib\site-packages\robot\model\itemlist.py:68)
+	at robot.model.itemlist$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\itemlist.py)
+	at robot.model.visitor$py.visit_suite$2(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py:87)
+	at robot.model.visitor$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\visitor.py)
+	at robot.model.testsuite$py.visit$19(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py:160)
+	at robot.model.testsuite$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\model\testsuite.py)
+	at robot.utils.application$py._execute$10(C:\jython2.7.0\Lib\site-packages\robot\utils\application.py:91)
+	at robot.utils.application$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\utils\application.py)
+	at robot.utils.application$py.execute_cli$5(C:\jython2.7.0\Lib\site-packages\robot\utils\application.py:46)
+	at robot.utils.application$py.call_function(C:\jython2.7.0\Lib\site-packages\robot\utils\application.py)
+	at runpy$py._run_code$9(C:\jython2.7.0\Lib\runpy.py:73)
+	at runpy$py.call_function(C:\jython2.7.0\Lib\runpy.py)
+	at runpy$py._run_module_as_main$14(C:\jython2.7.0\Lib\runpy.py:161)
+	at runpy$py.call_function(C:\jython2.7.0\Lib\runpy.py)
+Caused by: java.lang.ClassNotFoundException: org.apache.poi.openxml4j.exceptions.InvalidFormatException
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 182 more</msg>
+</errors>
+</robot>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:29:24.809" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="ObjectCreationTest">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:26.507" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:29:32.313" starttime="20161213 15:29:26.506"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:32.318" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:29:32.505" starttime="20161213 15:29:32.317"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:32.508" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:29:32.806" starttime="20161213 15:29:32.507"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:32.809" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:29:33.057" starttime="20161213 15:29:32.808"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:33.060" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:29:33.938" starttime="20161213 15:29:33.058"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:29:33.939" starttime="20161213 15:29:32.314"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${INVENTORY_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:33.945" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml'</msg>
+<status status="PASS" endtime="20161213 15:29:35.698" starttime="20161213 15:29:33.941"></status>
+</kw>
+<kw name="Create Country" library="Project_Keywords">
+<arguments>
+<arg>${COUNTRY_NAME}</arg>
+<arg>${COUNTRY_CONTINENT}</arg>
+<arg>${COUNTRY_LANGUAGE}</arg>
+</arguments>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${CREATE_COUNTRY_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:35.705" level="INFO">Clicking link '//*[@id="table_header"]/table/tbody/tr/td[1]/a'.</msg>
+<status status="PASS" endtime="20161213 15:29:36.168" starttime="20161213 15:29:35.703"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${COUNTRY_NAME_FIELD}</arg>
+<arg>${COUNTRY_NAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:29:36.171" level="INFO">Typing text 'Canada' into text field 'id=j_idt74:name'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20161213 15:29:37.725" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20161213 15:29:37.726" starttime="20161213 15:29:36.217"></status>
+</kw>
+<msg timestamp="20161213 15:29:37.732" level="FAIL">ValueError: Element locator 'id=j_idt74:name' did not match any elements.</msg>
+<status status="FAIL" endtime="20161213 15:29:37.732" starttime="20161213 15:29:36.169"></status>
+</kw>
+<status status="FAIL" endtime="20161213 15:29:37.734" starttime="20161213 15:29:35.699"></status>
+</kw>
+<status status="FAIL" endtime="20161213 15:29:37.735" critical="yes" starttime="20161213 15:29:26.502">ValueError: Element locator 'id=j_idt74:name' did not match any elements.</status>
+</test>
+<status status="FAIL" endtime="20161213 15:29:37.738" starttime="20161213 15:29:25.950"></status>
+</suite>
+<status status="FAIL" endtime="20161213 15:29:37.748" starttime="20161213 15:29:25.942"></status>
+</suite>
+<status status="FAIL" endtime="20161213 15:29:37.755" starttime="20161213 15:29:25.852"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="SBMSolution" pass="0">SBMSolution</stat>
+<stat fail="1" id="s1-s1" name="Tests" pass="0">SBMSolution.Tests</stat>
+<stat fail="1" id="s1-s1-s1" name="WebTest" pass="0">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:25:07.316" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="LoginTest">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:07.989" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:25:13.678" starttime="20161213 15:25:07.986"></status>
+</kw>
+<kw type="for" name="${INDEX} IN RANGE [ 0 | 3 ]">
+<kw type="foritem" name="${INDEX} = 0">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_USERNAMES}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<msg timestamp="20161213 15:25:13.684" level="INFO">${Current_Username} = zzzonked</msg>
+<status status="PASS" endtime="20161213 15:25:13.685" starttime="20161213 15:25:13.682"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_PASSWORDS}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<msg timestamp="20161213 15:25:13.688" level="INFO">${Current_Password} = zz28__ZZ</msg>
+<status status="PASS" endtime="20161213 15:25:13.689" starttime="20161213 15:25:13.686"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_URLs}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_URL}</var>
+</assign>
+<msg timestamp="20161213 15:25:13.692" level="INFO">${Current_URL} = http://s1.web.sumdu.edu.ua:8080/pages/startpage.xhtml</msg>
+<status status="PASS" endtime="20161213 15:25:13.693" starttime="20161213 15:25:13.690"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:13.698" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:25:13.818" starttime="20161213 15:25:13.697"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:13.821" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:25:14.145" starttime="20161213 15:25:13.819"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:14.152" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:25:14.541" starttime="20161213 15:25:14.150"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:14.544" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:25:16.111" starttime="20161213 15:25:14.542"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:25:16.112" starttime="20161213 15:25:13.694"></status>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Location Should Contain</arg>
+<arg>${Current_URL}</arg>
+</arguments>
+<kw name="Location Should Contain" library="Selenium2Library">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${Current_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:16.137" level="INFO">Current location contains 'http://s1.web.sumdu.edu.ua:8080/pages/startpage.xhtml'.</msg>
+<status status="PASS" endtime="20161213 15:25:16.138" starttime="20161213 15:25:16.118"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:25:16.138" starttime="20161213 15:25:16.113"></status>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Page Should Contain</arg>
+<arg>${Current_Username}</arg>
+<arg>INFO</arg>
+</arguments>
+<kw name="Page Should Contain" library="Selenium2Library">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg timestamp="20161213 15:25:16.199" level="INFO">Current page contains text 'zzzonked'.</msg>
+<status status="PASS" endtime="20161213 15:25:16.200" starttime="20161213 15:25:16.143"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:25:16.201" starttime="20161213 15:25:16.140"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:25:16.202" starttime="20161213 15:25:13.681"></status>
+</kw>
+<kw type="foritem" name="${INDEX} = 1">
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_USERNAMES}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<msg timestamp="20161213 15:25:16.205" level="INFO">${Current_Username} = u</msg>
+<status status="PASS" endtime="20161213 15:25:16.205" starttime="20161213 15:25:16.203"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_PASSWORDS}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<msg timestamp="20161213 15:25:16.208" level="INFO">${Current_Password} = zz28__ZZ</msg>
+<status status="PASS" endtime="20161213 15:25:16.208" starttime="20161213 15:25:16.206"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${L_URLs}</arg>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_URL}</var>
+</assign>
+<msg timestamp="20161213 15:25:16.210" level="INFO">${Current_URL} = http://s1.web.sumdu.edu.ua:8080/pages/startpage.xhtml</msg>
+<status status="PASS" endtime="20161213 15:25:16.211" starttime="20161213 15:25:16.209"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:16.217" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:25:16.351" starttime="20161213 15:25:16.213"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:25:16.355" level="INFO">Typing text 'u' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:25:16.521" starttime="20161213 15:25:16.353">

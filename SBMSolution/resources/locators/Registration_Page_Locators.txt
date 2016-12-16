@@ -1,0 +1,7 @@
+*** Variables ***
+${USERNAME_FIELD}    id=registerForm:username
+${PASSWORD_FIELD}    id=registerForm:password
+${REPASSWORD_FIELD}    id=registerForm:confirmPassword
+${EMAIL_FIELD}    id=registerForm:email
+${ROLE_LIST}      id=registerForm:role
+${CONFIRM_REGISTRATION_BUTTON}    name=registerForm:j_idt25

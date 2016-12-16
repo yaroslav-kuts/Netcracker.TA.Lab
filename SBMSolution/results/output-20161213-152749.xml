@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 15:27:49.468" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="ObjectCreationTest">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:50.126" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:27:55.935" starttime="20161213 15:27:50.124"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:55.945" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 15:27:56.206" starttime="20161213 15:27:55.942"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:56.211" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 15:27:56.589" starttime="20161213 15:27:56.208"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:56.592" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 15:27:57.045" starttime="20161213 15:27:56.590"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:57.049" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 15:27:58.338" starttime="20161213 15:27:57.047"></status>
+</kw>
+<status status="PASS" endtime="20161213 15:27:58.339" starttime="20161213 15:27:55.939"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${INVENTORY_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:58.344" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml'</msg>
+<status status="PASS" endtime="20161213 15:27:59.842" starttime="20161213 15:27:58.341"></status>
+</kw>
+<kw name="Create Country" library="Project_Keywords">
+<arguments>
+<arg>${COUNTRY_NAME}</arg>
+<arg>${COUNTRY_CONTINENT}</arg>
+<arg>${COUNTRY_LANGUAGE}</arg>
+</arguments>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${CREATE_COUNTRY_LINK}</arg>
+</arguments>
+<msg timestamp="20161213 15:27:59.848" level="INFO">Clicking link '//*[@id="table_header"]/table/tbody/tr/td[1]/a'.</msg>
+<status status="PASS" endtime="20161213 15:28:00.282" starttime="20161213 15:27:59.846"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${COUNTRY_NAME_FIELD}</arg>
+<arg>${COUNTRY_NAME}</arg>
+</arguments>
+<msg timestamp="20161213 15:28:00.285" level="INFO">Typing text 'Canada' into text field 'id=j_idt74:name'</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20161213 15:28:01.893" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20161213 15:28:01.894" starttime="20161213 15:28:00.326"></status>
+</kw>
+<msg timestamp="20161213 15:28:01.898" level="FAIL">ValueError: Element locator 'id=j_idt74:name' did not match any elements.</msg>
+<status status="FAIL" endtime="20161213 15:28:01.899" starttime="20161213 15:28:00.283"></status>
+</kw>
+<status status="FAIL" endtime="20161213 15:28:01.901" starttime="20161213 15:27:59.844"></status>
+</kw>
+<kw type="teardown" name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20161213 15:28:05.174" starttime="20161213 15:28:01.903"></status>
+</kw>
+<status status="FAIL" endtime="20161213 15:28:05.176" critical="yes" starttime="20161213 15:27:50.118">ValueError: Element locator 'id=j_idt74:name' did not match any elements.</status>
+</test>
+<status status="FAIL" endtime="20161213 15:28:05.180" starttime="20161213 15:27:49.630"></status>
+</suite>
+<status status="FAIL" endtime="20161213 15:28:05.189" starttime="20161213 15:27:49.622"></status>
+</suite>
+<status status="FAIL" endtime="20161213 15:28:05.196" starttime="20161213 15:27:49.518"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="SBMSolution" pass="0">SBMSolution</stat>
+<stat fail="1" id="s1-s1" name="Tests" pass="0">SBMSolution.Tests</stat>
+<stat fail="1" id="s1-s1-s1" name="WebTest" pass="0">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

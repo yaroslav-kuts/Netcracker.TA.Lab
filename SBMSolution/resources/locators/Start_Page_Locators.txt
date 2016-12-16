@@ -1,0 +1,3 @@
+*** Variables ***
+${LOGOUT_LINK}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[4]/a
+${INVENTORY_LINK}    xpath=//*[@id="inventory"]/a

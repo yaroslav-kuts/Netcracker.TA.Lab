@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161213 16:16:53.628" generator="Robot 3.0 (Python 2.7.11 on win32)">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution" id="s1" name="SBMSolution">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests" id="s1-s1" name="Tests">
+<suite source="C:\Users\Ярослав\Dropbox\Netcracker\TA\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" id="s1-s1-s1" name="WebTest">
+<test id="s1-s1-s1-t1" name="Delete Location Test">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20161213 16:16:55.335" level="INFO">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 16:17:02.645" starttime="20161213 16:16:55.333"></status>
+</kw>
+<kw name="Login" library="Project_Keywords">
+<arguments>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:02.650" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status status="PASS" endtime="20161213 16:17:02.816" starttime="20161213 16:17:02.649"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:02.819" level="INFO">Typing text 'zzzonked' into text field 'name=j_username'</msg>
+<status status="PASS" endtime="20161213 16:17:03.116" starttime="20161213 16:17:02.817"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${L_PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:03.119" level="INFO">Typing password into text field 'name=j_password'</msg>
+<status status="PASS" endtime="20161213 16:17:03.388" starttime="20161213 16:17:03.117"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<arguments>
+<arg>${L_SUBMIT}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:03.391" level="INFO">Submitting form 'name=f'.</msg>
+<status status="PASS" endtime="20161213 16:17:04.562" starttime="20161213 16:17:03.390"></status>
+</kw>
+<status status="PASS" endtime="20161213 16:17:04.564" starttime="20161213 16:17:02.647"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${INVENTORY_PAGE_URL}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:04.571" level="INFO">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml?id=2'</msg>
+<status status="PASS" endtime="20161213 16:17:05.634" starttime="20161213 16:17:04.569"></status>
+</kw>
+<kw name="Delete Country" library="Project_Keywords">
+<arguments>
+<arg>${COUNTRY_NAME}</arg>
+</arguments>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>//div[@id='table_data']//td[a='${COUNTRY_NAME}']/input</arg>
+</arguments>
+<msg timestamp="20161213 16:17:05.639" level="INFO">Clicking element '//div[@id='table_data']//td[a='Canada']/input'.</msg>
+<status status="PASS" endtime="20161213 16:17:05.793" starttime="20161213 16:17:05.637"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${DELETE_COUNTRY_BUTTON}</arg>
+</arguments>
+<msg timestamp="20161213 16:17:05.795" level="INFO">Clicking button 'name=j_idt76:tabView:j_idt87'.</msg>
+<status status="PASS" endtime="20161213 16:17:06.766" starttime="20161213 16:17:05.794"></status>
+</kw>
+<status status="PASS" endtime="20161213 16:17:06.766" starttime="20161213 16:17:05.635"></status>
+</kw>
+<status status="PASS" endtime="20161213 16:17:06.767" critical="yes" starttime="20161213 16:16:55.331"></status>
+</test>
+<status status="PASS" endtime="20161213 16:17:06.770" starttime="20161213 16:16:54.778"></status>
+</suite>
+<status status="PASS" endtime="20161213 16:17:06.776" starttime="20161213 16:16:54.771"></status>
+</suite>
+<status status="PASS" endtime="20161213 16:17:06.780" starttime="20161213 16:16:54.673"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="SBMSolution" pass="1">SBMSolution</stat>
+<stat fail="0" id="s1-s1" name="Tests" pass="1">SBMSolution.Tests</stat>
+<stat fail="0" id="s1-s1-s1" name="WebTest" pass="1">SBMSolution.Tests.WebTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

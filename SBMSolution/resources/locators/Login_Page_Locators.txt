@@ -1,0 +1,4 @@
+*** Variables ***
+${L_USERNAME_FIELD}    name=j_username
+${L_PASSWORD_FIELD}    name=j_password
+${L_SUBMIT}       name=f

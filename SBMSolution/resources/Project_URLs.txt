@@ -1,0 +1,5 @@
+*** Variables ***
+${LOGIN_PAGE_URL}    http://s1.web.sumdu.edu.ua:8080/login.jsp
+${REGISTRATION_PAGE_URL}    http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml
+${START_PAGE_URL}    http://s1.web.sumdu.edu.ua:8080/pages/startpage.xhtml
+${INVENTORY_PAGE_URL}    http://s1.web.sumdu.edu.ua:8080/pages/inventory/inventory.xhtml?id=2
