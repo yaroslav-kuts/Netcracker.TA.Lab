@@ -1,0 +1,71 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_ATM_TEST_DATA_SHEET_NAME}    WITH NAME    EditATMDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_ATM_TEST_DATA_SHEET_NAME}    edit_atm_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Rack
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Connection Type
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Extra Security
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditATMDataSetReader.Get Cell Value    ${INDEX}    11
+    [Return]    ${VALUE}
+
+Get Edit ATM Dataset Length
+    ${LENGTH}=    EditATMDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

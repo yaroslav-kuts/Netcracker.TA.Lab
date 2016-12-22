@@ -1,0 +1,41 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_FLOOR_TEST_DATA_SHEET_NAME}    WITH NAME    CreateFloorDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_FLOOR_TEST_DATA_SHEET_NAME}    create_floor_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Int Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateFloorDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Create Floor Dataset Length
+    ${LENGTH}=    CreateFloorDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

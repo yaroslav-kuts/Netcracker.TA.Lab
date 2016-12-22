@@ -1,0 +1,43 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_BUILDING_TEST_DATA_SHEET_NAME}    WITH NAME    SearchBuildingDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_BUILDING_TEST_DATA_SHEET_NAME}    searching_building_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Street
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Int Value    ${INDEX}    4
+    ${RESULT}    Convert To Integer    ${VALUE}
+    [Return]    ${RESULT}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Int Value    ${INDEX}    6
+    ${RESULT}    Convert To Integer    ${VALUE}
+    [Return]    ${RESULT}
+
+Is Connected
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchBuildingDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Search Building Dataset Length
+    ${LENGTH}=    SearchBuildingDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

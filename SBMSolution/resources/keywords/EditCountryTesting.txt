@@ -1,0 +1,36 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_COUNTRY_TEST_DATA_SHEET_NAME}    WITH NAME    EditCountryDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_COUNTRY_TEST_DATA_SHEET_NAME}    edit_country_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCountryDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCountryDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Continent
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCountryDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Language
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCountryDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCountryDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Edit Country Dataset Length
+    ${LENGTH}=    EditCountryDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

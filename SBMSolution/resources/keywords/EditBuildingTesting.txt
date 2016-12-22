@@ -1,0 +1,56 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_BUILDING_TEST_DATA_SHEET_NAME}    WITH NAME    EditBuildingDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_BUILDING_TEST_DATA_SHEET_NAME}    edit_building_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Street
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Int Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Int Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Is Connected
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditBuildingDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Edit Building Dataset Length
+    ${LENGTH}=    EditBuildingDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

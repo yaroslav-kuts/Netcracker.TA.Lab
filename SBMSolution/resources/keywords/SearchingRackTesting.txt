@@ -1,0 +1,41 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_RACK_TEST_DATA_SHEET_NAME}    WITH NAME    SearchRackDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_RACK_TEST_DATA_SHEET_NAME}    searching_rack_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Int Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Int Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRackDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Search Rack Dataset Length
+    ${LENGTH}=    SearchRackDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

@@ -1,0 +1,26 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_FLOOR_TEST_DATA_SHEET_NAME}    WITH NAME    SearchFloorDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_FLOOR_TEST_DATA_SHEET_NAME}    searching_floor_test_data
+
+*** Keywords ***
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchFloorDataSetReader.Get Cell Int Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchFloorDataSetReader.Get Cell Int Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchFloorDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Search Floor Dataset Length
+    ${LENGTH}=    SearchFloorDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

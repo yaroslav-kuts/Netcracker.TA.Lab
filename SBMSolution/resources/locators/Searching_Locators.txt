@@ -1,0 +1,14 @@
+*** Variables ***
+${SEARCHING_FIELD}    id=search-text-input
+${SEARCH_COUNTRY_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[1]/a
+${SEARCH_CITY_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[2]/a
+${SEARCH_BUILDING_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[3]/a
+${SEARCH_FLOOR_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[4]/a
+${SEARCH_ROOM_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[5]/a
+${SEARCH_RACK_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[6]/a
+${SEARCH_DEVICE_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[7]/a
+${SEARCH_POST_TERMINAL_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[8]/a
+${SEARCH_PAY_BOX_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[9]/a
+${SEARCH_ATM_ITEM}    xpath=//*[@id="navigation_toolbar"]/table/tbody/tr/td[2]/ul/li/ul/li[10]/a
+${SEARCH_BUTTON}    xpath=//td/input[@type='submit' and @value='Search']
+${OPEN_STACK_TRACE_LINK}    xpath=//div/h2[1]/a

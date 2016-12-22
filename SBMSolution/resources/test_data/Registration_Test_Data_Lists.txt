@@ -1,8 +1,0 @@
-*** Variables ***
-@{USERNAMES}      1    somenewuser7
-@{PASSWORDS}      pass12%U    pass12%U
-@{REPASSWORDS}    pass12%U    pass12%U
-@{EMAILS}         user@mail.com    user@mail.com
-@{ROLES}          RW    RW
-@{URLs}           ${LOGIN_PAGE_URL}    ${LOGIN_PAGE_URL}
-@{TEXTS}          You have successfully registered    You have successfully registered

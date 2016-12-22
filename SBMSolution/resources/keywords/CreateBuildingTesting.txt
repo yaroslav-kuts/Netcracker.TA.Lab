@@ -1,0 +1,53 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_BUILDING_TEST_DATA_SHEET_NAME}    WITH NAME    CreateBuildingDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_BUILDING_TEST_DATA_SHEET_NAME}    create_building_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Street
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Int Value    ${INDEX}    4
+    ${RESULT}    Convert To Integer    ${VALUE}
+    [Return]    ${RESULT}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Int Value    ${INDEX}    5
+    ${RESULT}    Convert To Integer    ${VALUE}
+    [Return]    ${RESULT}
+
+Is Connected
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateBuildingDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Create Building Dataset Length
+    ${LENGTH}=    CreateBuildingDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

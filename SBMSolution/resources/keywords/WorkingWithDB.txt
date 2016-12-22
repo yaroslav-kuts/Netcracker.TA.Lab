@@ -1,0 +1,13 @@
+*** Settings ***
+Library           Selenium2Library
+Resource          ../locators/DB_Read_Page_Locators.txt
+
+*** Keywords ***
+DoneQuery
+    [Arguments]    ${SQL_QUERY}
+    Go To    ${DB_READ_URL}
+    Click Element    ${EDITOR_DIV}
+    Press Key    ${TEXT_AREA}    \\1
+    Input Text    ${TEXT_AREA}    select * from objects;
+    Press Key    ${TEXT_AREA}    \\0
+    Press Key    ${TEXT_AREA}    \\13

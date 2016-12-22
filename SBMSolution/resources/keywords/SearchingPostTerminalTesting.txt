@@ -1,0 +1,41 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_POST_TERMINAL_TEST_DATA_SHEET_NAME}    WITH NAME    SearchPostTerminalDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_POST_TERMINAL_TEST_DATA_SHEET_NAME}    searching_post_term_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPostTerminalDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Search Post Terminal Dataset Length
+    ${LENGTH}=    SearchPostTerminalDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

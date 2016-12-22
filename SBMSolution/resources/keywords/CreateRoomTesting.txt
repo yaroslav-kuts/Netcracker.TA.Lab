@@ -1,0 +1,46 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_ROOM_TEST_DATA_SHEET_NAME}    WITH NAME    CreateRoomDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_ROOM_TEST_DATA_SHEET_NAME}    create_room_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Int Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRoomDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Create Room Dataset Length
+    ${LENGTH}=    CreateRoomDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

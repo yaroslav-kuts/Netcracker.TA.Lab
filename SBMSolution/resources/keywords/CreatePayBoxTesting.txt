@@ -1,0 +1,66 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_PAY_BOX_TEST_DATA_SHEET_NAME}    WITH NAME    CreatePayBoxDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_PAY_BOX_TEST_DATA_SHEET_NAME}    create_pay_box_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Rack
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Secure Protocol
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Display Size
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Int Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreatePayBoxDataSetReader.Get Cell Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Create Pay Box Dataset Length
+    ${LENGTH}=    CreatePayBoxDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

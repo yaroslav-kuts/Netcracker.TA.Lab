@@ -1,0 +1,26 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_ROOM_TEST_DATA_SHEET_NAME}    WITH NAME    SearchRoomDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_ROOM_TEST_DATA_SHEET_NAME}    searching_room_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRoomDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRoomDataSetReader.Get Cell Int Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchRoomDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Search Room Dataset Length
+    ${LENGTH}=    SearchRoomDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

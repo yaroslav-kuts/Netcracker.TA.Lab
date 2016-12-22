@@ -1,0 +1,32 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_CITY_TEST_DATA_SHEET_NAME}    WITH NAME    SearchCityDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_CITY_TEST_DATA_SHEET_NAME}    searching_city_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchCityDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Population
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchCityDataSetReader.Get Cell Int Value    ${INDEX}    2
+    ${RESULT}    Convert To Integer    ${VALUE}
+    [Return]    ${RESULT}
+
+Is Regional Center
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchCityDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchCityDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Search City Dataset Length
+    ${LENGTH}=    SearchCityDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

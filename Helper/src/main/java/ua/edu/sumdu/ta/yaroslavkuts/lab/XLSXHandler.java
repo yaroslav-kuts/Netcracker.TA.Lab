@@ -53,7 +53,11 @@ class XLSXHandler extends ExcelHandler {
 		if (rowIndex < 0 || cellIndex < 0) {
 			throw new IndexOutOfBoundsException("Row's or cell's index cannot be < 0");
 		} else {
-			cell = sheet.getRow(rowIndex).getCell(cellIndex);
+			try {
+				cell = sheet.getRow(rowIndex).getCell(cellIndex);
+			} catch (NullPointerException e) {
+				return null;
+			}
 		}
 		return cell;
 	}

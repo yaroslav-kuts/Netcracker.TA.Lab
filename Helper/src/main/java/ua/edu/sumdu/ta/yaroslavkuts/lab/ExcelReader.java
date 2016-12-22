@@ -1,5 +1,7 @@
 package ua.edu.sumdu.ta.yaroslavkuts.lab;
 
+import org.apache.poi.ss.usermodel.Cell;
+
 /**
  * Tool that enable read data from specified excel worksheet through cell's coordinates.
  *
@@ -26,7 +28,21 @@ public class ExcelReader {
 	}
 	
 	public String getCellValue(int rowIndex, int cellIndex) {
-		return handler.getCell(rowIndex, cellIndex).toString();
+		Cell cell = handler.getCell(rowIndex, cellIndex);
+		if (cell == null) return "";
+		else return cell.toString();
+	}
+	
+	public double getCellDoubleValue(int rowIndex, int cellIndex) {
+		Cell cell = handler.getCell(rowIndex, cellIndex);
+		if (cell == null) return 0.0;
+		else return Double.parseDouble(cell.toString());
+	}
+	
+	public int getCellIntValue(int rowIndex, int cellIndex) {
+		Cell cell = handler.getCell(rowIndex, cellIndex);
+		if (cell == null) return 0;
+		else return (int) Double.parseDouble(cell.toString());
 	}
 	
 	public int getNumberOfFilledRows() {

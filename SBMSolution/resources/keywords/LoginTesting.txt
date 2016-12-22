@@ -1,0 +1,26 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${GENERAL_TEST_DATA_FILE_URL}    ${LOGIN_TEST_DATA_SHEET_NAME}    WITH NAME    LoginDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${LOGIN_TEST_DATA_SHEET_NAME}    login_test_data
+
+*** Keywords ***
+Get Login
+    [Arguments]    ${INDEX}
+    ${VALUE}    LoginDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Password
+    [Arguments]    ${INDEX}
+    ${VALUE}    LoginDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    LoginDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Login Dataset Length
+    ${LENGTH}=    LoginDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

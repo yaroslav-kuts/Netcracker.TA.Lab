@@ -1,0 +1,47 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${GENERAL_TEST_DATA_FILE_URL}    ${REGISTRATION_TEST_DATA_SHEET_NAME}    WITH NAME    RegistrationDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${REGISTRATION_TEST_DATA_SHEET_NAME}    registration_test_data
+
+*** Keywords ***
+Get Repassword
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Username
+    [Arguments]    ${INDEX}
+    ${USERNAME}=    RegistrationDataSetReader.Get Cell Value    ${INDEX}    0
+    ${VALUE} =    Generate String    ${USERNAME}
+    [Return]    ${VALUE}
+
+Get Password
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Role
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Email
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Message
+    [Arguments]    ${INDEX}
+    ${VALUE}    RegistrationDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Registration Dataset Length
+    ${LENGTH}=    RegistrationDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

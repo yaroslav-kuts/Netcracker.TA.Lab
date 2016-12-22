@@ -1,0 +1,31 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_COUNTRY_TEST_DATA_SHEET_NAME}    WITH NAME    CreateCountryDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_COUNTRY_TEST_DATA_SHEET_NAME}    create_country_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateCountryDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Continent
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateCountryDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Language
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateCountryDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateCountryDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Create Country Dataset Length
+    ${LENGTH}=    CreateCountryDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

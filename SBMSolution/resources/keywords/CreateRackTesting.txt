@@ -1,0 +1,66 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${TEST_DATA_FILE_URL}    ${CREATE_RACK_TEST_DATA_SHEET_NAME}    WITH NAME    CreateRackDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${CREATE_RACK_TEST_DATA_SHEET_NAME}    create_rack_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Int Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Int Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Int Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    CreateRackDataSetReader.Get Cell Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Create Rack Dataset Length
+    ${LENGTH}=    CreateRackDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

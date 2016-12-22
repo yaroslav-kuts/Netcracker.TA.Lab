@@ -1,0 +1,46 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_FLOOR_TEST_DATA_SHEET_NAME}    WITH NAME    EditFloorDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_FLOOR_TEST_DATA_SHEET_NAME}    edit_floor_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Int Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get New Number
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Square
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Int Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditFloorDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Edit Floor Dataset Length
+    ${LENGTH}=    EditFloorDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

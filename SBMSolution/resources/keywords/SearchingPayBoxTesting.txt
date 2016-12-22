@@ -1,0 +1,36 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_PAY_BOX_TEST_DATA_SHEET_NAME}    WITH NAME    SearchPayBoxDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_PAY_BOX_TEST_DATA_SHEET_NAME}    searching_pay_box_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPayBoxDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Secure Protocol
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPayBoxDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Display Size
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPayBoxDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPayBoxDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchPayBoxDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Search Pay Box Dataset Length
+    ${LENGTH}=    SearchPayBoxDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

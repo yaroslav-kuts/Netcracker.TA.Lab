@@ -1,0 +1,96 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_DEVICE_TEST_DATA_SHEET_NAME}    WITH NAME    EditDeviceDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_DEVICE_TEST_DATA_SHEET_NAME}    edit_device_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Rack
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get MAC Address
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get RAM
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get CPU
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get IP Address
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    11
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    12
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    13
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Int Value    ${INDEX}    14
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    15
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditDeviceDataSetReader.Get Cell Value    ${INDEX}    16
+    [Return]    ${VALUE}
+
+Get Edit Device Dataset Length
+    ${LENGTH}=    EditDeviceDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

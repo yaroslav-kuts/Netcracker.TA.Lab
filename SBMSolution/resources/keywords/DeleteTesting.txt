@@ -1,0 +1,47 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${GENERAL_TEST_DATA_FILE_URL}    ${DELETE_TEST_DATA_SHEET_NAME}    WITH NAME    DeleteDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${DELETE_TEST_DATA_SHEET_NAME}    delete_test_data
+
+*** Keywords ***
+Get Country Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    0    1
+    [Return]    ${VALUE}
+
+Get City Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    1    1
+    [Return]    ${VALUE}
+
+Get Building Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    2    1
+    [Return]    ${VALUE}
+
+Get Floor Number
+    ${VALUE}    DeleteDataSetReader.Get Cell Int Value    3    1
+    [Return]    ${VALUE}
+
+Get Room Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    4    1
+    [Return]    ${VALUE}
+
+Get Rack Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    5    1
+    [Return]    ${VALUE}
+
+Get Device Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    6    1
+    [Return]    ${VALUE}
+
+Get Post Terminal Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    7    1
+    [Return]    ${VALUE}
+
+Get Pay Box Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    8    1
+    [Return]    ${VALUE}
+
+Get ATM Name
+    ${VALUE}    DeleteDataSetReader.Get Cell Value    9    1
+    [Return]    ${VALUE}

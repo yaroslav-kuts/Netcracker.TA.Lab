@@ -26,6 +26,35 @@ public class ExcelReaderTest {
 		Assert.assertEquals(reader.getNumberOfFilledRows(), 3);
 	}
 	
+	@Test
+	public void getIntegerValueTest() {
+		int i = reader.getCellIntValue(1, 4);
+		
+		Assert.assertEquals(3, i);
+	}
+	
+	@Test
+	public void getDoubleValueTest() {
+		double i = reader.getCellDoubleValue(1, 4);
+		
+		Assert.assertEquals(3.0, i, 0.0);
+	}
+	
+	@Test
+	public void getEmptyCellValueTest() {
+		Assert.assertEquals("", reader.getCellValue(10, 0));
+	}
+	
+	@Test
+	public void getEmptyCellIntValueTest() {
+		Assert.assertEquals(0, reader.getCellIntValue(10, 0));
+	}
+	
+	@Test
+	public void getEmptyCellDoubleValueTest() {
+		Assert.assertEquals(0.0, reader.getCellDoubleValue(10, 0), 0.0);
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void notExcelFormatTest() {
 		reader = new ExcelReader("data.doc", "login_test_data");

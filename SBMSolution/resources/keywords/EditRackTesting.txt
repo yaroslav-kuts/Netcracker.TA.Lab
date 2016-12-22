@@ -1,0 +1,71 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_RACK_TEST_DATA_SHEET_NAME}    WITH NAME    EditRackDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_RACK_TEST_DATA_SHEET_NAME}    edit_rack_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Int Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Int Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Int Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditRackDataSetReader.Get Cell Value    ${INDEX}    11
+    [Return]    ${VALUE}
+
+Get Edit Rack Dataset Length
+    ${LENGTH}=    EditRackDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

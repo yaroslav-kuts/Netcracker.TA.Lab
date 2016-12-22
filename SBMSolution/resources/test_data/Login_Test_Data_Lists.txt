@@ -1,4 +1,0 @@
-*** Variables ***
-@{L_USERNAMES}    zzzonked    u    newuser1
-@{L_PASSWORDS}    zz28__ZZ    zz28__ZZ    zz28__ZZ
-@{L_URLs}         ${START_PAGE_URL}    ${START_PAGE_URL}    ${START_PAGE_URL}

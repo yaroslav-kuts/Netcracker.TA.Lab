@@ -1,0 +1,41 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_CITY_TEST_DATA_SHEET_NAME}    WITH NAME    EditCityDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_CITY_TEST_DATA_SHEET_NAME}    edit_city_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Population
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Int Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Is Regional Center
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditCityDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Edit City Dataset Length
+    ${LENGTH}=    EditCityDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

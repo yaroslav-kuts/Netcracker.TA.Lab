@@ -1,0 +1,76 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_POST_TERMINAL_TEST_DATA_SHEET_NAME}    WITH NAME    EditPostTerminalDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_POST_TERMINAL_TEST_DATA_SHEET_NAME}    edit_post_terminal_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Rack
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Int Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    11
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPostTerminalDataSetReader.Get Cell Value    ${INDEX}    12
+    [Return]    ${VALUE}
+
+Get Edit Post Terminal Dataset Length
+    ${LENGTH}=    EditPostTerminalDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

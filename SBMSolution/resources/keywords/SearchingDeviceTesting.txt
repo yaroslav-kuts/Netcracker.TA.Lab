@@ -1,0 +1,61 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${SEARCHING_TEST_DATA_FILE_URL}    ${SEARCH_DEVICE_TEST_DATA_SHEET_NAME}    WITH NAME    SearchDeviceDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${SEARCH_DEVICE_TEST_DATA_SHEET_NAME}    searching_device_test_data
+
+*** Keywords ***
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get MAC Address
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get RAM
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Int Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get CPU
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Int Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get IP Address
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Width
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Int Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Length
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Int Value    ${INDEX}    12
+    [Return]    ${VALUE}
+
+Get Height
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Int Value    ${INDEX}    14
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Value    ${INDEX}    16
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    SearchDeviceDataSetReader.Get Cell Value    ${INDEX}    17
+    [Return]    ${VALUE}
+
+Get Search Device Dataset Length
+    ${LENGTH}=    SearchDeviceDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

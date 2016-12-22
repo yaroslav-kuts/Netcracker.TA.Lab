@@ -1,0 +1,71 @@
+*** Settings ***
+Library           ua.edu.sumdu.ta.yaroslavkuts.lab.ExcelReader    ${EDIT_TEST_DATA_FILE_URL}    ${EDIT_PAY_BOX_TEST_DATA_SHEET_NAME}    WITH NAME    EditPayBoxDataSetReader
+Resource          ../Project_URLs.txt
+
+*** Variables ***
+${EDIT_PAY_BOX_TEST_DATA_SHEET_NAME}    edit_pay_box_test_data
+
+*** Keywords ***
+Get Country
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    0
+    [Return]    ${VALUE}
+
+Get City
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    1
+    [Return]    ${VALUE}
+
+Get Building
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    2
+    [Return]    ${VALUE}
+
+Get Floor
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    3
+    [Return]    ${VALUE}
+
+Get Room
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    4
+    [Return]    ${VALUE}
+
+Get Rack
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    5
+    [Return]    ${VALUE}
+
+Get Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    6
+    [Return]    ${VALUE}
+
+Get New Name
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    7
+    [Return]    ${VALUE}
+
+Get Secure Protocol
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    8
+    [Return]    ${VALUE}
+
+Get Display Size
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Int Value    ${INDEX}    9
+    [Return]    ${VALUE}
+
+Get Physical Status
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    10
+    [Return]    ${VALUE}
+
+Get Expected URL
+    [Arguments]    ${INDEX}
+    ${VALUE}    EditPayBoxDataSetReader.Get Cell Value    ${INDEX}    11
+    [Return]    ${VALUE}
+
+Get Edit Pay Box Dataset Length
+    ${LENGTH}=    EditPayBoxDataSetReader.Get Number Of Filled Rows
+    [Return]    ${LENGTH}

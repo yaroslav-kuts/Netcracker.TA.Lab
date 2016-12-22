@@ -1,0 +1,3 @@
+*** Variables ***
+${EDITOR_DIV}     id=editor
+${TEXT_AREA}      xpath=//*[@id="editor"]/textarea
