@@ -1,13 +1,15 @@
 *** Settings ***
-Library           Selenium2Library
+Library           Selenium2Library    run_on_failure=Nothing
+Library           DateTime
+Library           String
+Library           Collections
 Resource          ../Project_URLs.txt
 Resource          ../locators/Login_Page_Locators.txt
 Resource          ../locators/Registration_Page_Locators.txt
 Resource          ../locators/Start_Page_Locators.txt
 Resource          ../locators/Inventory_Page_Locators.txt
 Resource          ../locators/Navigation_Tree_Page_Locators.txt
-Library           String
-Library           Collections
+Resource          OperationKeywords.txt
 
 *** Variables ***
 ${BROWSER}        Chrome
@@ -30,6 +32,7 @@ Create ATM
     Select From List By Value    ${ATM_PHYSICAL_STATUS_LIST}    ${ATM_PHYSICAL_STATUS}
     Click Link    ${ATM_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${ATM_SAVE_BUTTON}
 
 Create Building
@@ -40,6 +43,7 @@ Create Building
     Input Text    ${BUILDING_NUMBER_FIELD}    ${BUILDING_NUMBER}
     Input Text    ${BUILDING_SQUARE_FIELD}    ${BUILDING_SQUARE}
     Select From List By Value    ${BUILDING_IS_CONNECTED_LIST}    ${BUILDING_IS_CONNECTED}
+    Take Screenshot
     Click Button    ${BUILDING_SAVE_BUTTON}
 
 Create City
@@ -48,6 +52,7 @@ Create City
     Input Text    ${CITY_NAME_FIELD}    ${CITY_NAME}
     Input Text    ${CITY_POPULATION_FIELD}    ${CITY_POPULATION}
     Select From List By Value    ${CITY_IS_REGIONAL_CENTER_LIST}    ${CITY_IS_REGIONAL_CENTER}
+    Take Screenshot
     Click Button    ${CITY_SAVE_BUTTON}
 
 Create Country
@@ -56,6 +61,7 @@ Create Country
     Input Text    ${COUNTRY_NAME_FIELD}    ${COUNTRY_NAME}
     Select From List By Value    ${COUNTRY_CONTINENT_LIST}    ${COUNTRY_CONTINENT}
     Input Text    ${COUNTRY_LANGUAGE_FIELD}    ${COUNTRY_LANGUAGE}
+    Take Screenshot
     Click Button    ${COUNTRY_SAVE_BUTTON}
 
 Create Device
@@ -75,6 +81,7 @@ Create Device
     Choose From Navigation Tree
     Click Link    ${DEVICE_NETWORK_ELEMENT_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${DEVICE_SAVE_BUTTON}
 
 Create Floor
@@ -82,26 +89,8 @@ Create Floor
     Click Link    ${CREATE_FLOOR_LINK}
     Input Text    ${FLOOR_NUMBER_FIELD}    ${FLOOR_NUMBER}
     Input Text    ${FLOOR_SQUARE_FIELD}    ${FLOOR_SQUARE}
+    Take Screenshot
     Click Button    ${FLOOR_SAVE_BUTTON}
-
-Create Location
-    [Arguments]    ${COUNTRY_NAME}    ${COUNTRY_CONTINENT}    ${COUNTRY_LANGUAGE}    ${CITY_NAME}    ${CITY_POPULATION}    ${CITY_IS_REGIONAL_CENTER}
-    ...    ${BUILDING_NAME}    ${BUILDING_STREET_NAME}    ${BUILDING_NUMBER}    ${BUILDING_SQUARE}    ${BUILDING_IS_CONNECTED}    ${FLOOR_NUMBER}
-    ...    ${FLOOR_SQUARE}    ${ROOM_NAME}    ${ROOM_SQUARE}    ${RACK_NAME}    ${RACK_WIDTH}    ${RACK_LENGTH}
-    ...    ${RACK_HEIGHT}    ${RACK_PSYSICAL_STATUS}
-    Go To    ${INVENTORY_PAGE_URL}
-    Create Country    ${COUNTRY_NAME}    ${COUNTRY_CONTINENT}    ${COUNTRY_LANGUAGE}
-    Open Country    ${COUNTRY_NAME}
-    Create City    ${CITY_NAME}    ${CITY_POPULATION}    ${CITY_IS_REGIONAL_CENTER}
-    Open City    ${CITY_NAME}
-    Create Building    ${BUILDING_NAME}    ${BUILDING_STREET_NAME}    ${BUILDING_NUMBER}    ${BUILDING_SQUARE}    ${BUILDING_IS_CONNECTED}
-    Open Building    ${BUILDING_NAME}
-    Create Floor    ${FLOOR_NUMBER}    ${FLOOR_SQUARE}
-    Open Floor    ${FLOOR_NUMBER}
-    Create Room    ${ROOM_NAME}    ${ROOM_SQUARE}
-    Open Room    ${ROOM_NAME}
-    Create Rack    ${RACK_NAME}    ${RACK_WIDTH}    ${RACK_LENGTH}    ${RACK_HEIGHT}    ${RACK_PSYSICAL_STATUS}
-    Open Rack    ${RACK_NAME}
 
 Create Pay Box
     [Arguments]    ${PAY_BOX_NAME}    ${PAY_BOX_SECURE_PROTOCOL}    ${PAY_BOX_DISPLAY_SIZE}    ${PAY_BOX_PHYSICAL_STATUS}
@@ -112,6 +101,7 @@ Create Pay Box
     Select From List By Value    ${PAY_BOX_PHYSICAL_STATUS_LIST}    ${PAY_BOX_PHYSICAL_STATUS}
     Click Link    ${PAY_BOX_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${PAY_BOX_SAVE_BUTTON}
 
 Create Post Terminal
@@ -124,6 +114,7 @@ Create Post Terminal
     Select From List By Value    ${POST_TERMINAL_PHYSICAL_STATUS_LIST}    ${POST_TERMINAL_PHYSICAL_STATUS}
     Click Link    ${POST_TERMINAL_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${POST_TERMINAL_SAVE_BUTTON}
 
 Create Rack
@@ -134,6 +125,7 @@ Create Rack
     Input Text    ${RACK_LENGTH_FIELD}    ${RACK_LENGTH}
     Input Text    ${RACK_HEIGHT_FIELD}    ${RACK_HEIGHT}
     Select From List By Value    ${RACK_PHYSICAL_STATUS_LIST}    ${RACK_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${RACK_SAVE_BUTTON}
 
 Create Room
@@ -141,56 +133,67 @@ Create Room
     Click Link    ${CREATE_ROOM_LINK}
     Input Text    ${ROOM_NAME_FIELD}    ${ROOM_NAME}
     Input Text    ${ROOM_SQUARE_FIELD}    ${ROOM_SQUARE}
+    Take Screenshot
     Click Button    ${ROOM_SAVE_BUTTON}
 
 Delete ATM
     [Arguments]    ${ATM_Name}
     Click Element    //div[@id='table_data']//td[a='${ATM_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_ATM_BUTTON}
 
 Delete Building
     [Arguments]    ${BUILDING_NAME}
     Click Element    //div[@id='table_data']//td[a='${BUILDING_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_BUILDING_BUTTON}
 
 Delete City
     [Arguments]    ${CITY_NAME}
     Click Element    //div[@id='table_data']//td[a='${CITY_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_CITY_BUTTON}
 
 Delete Country
     [Arguments]    ${COUNTRY_NAME}
     Click Element    //div[@id='table_data']//td[a='${COUNTRY_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_COUNTRY_BUTTON}
 
 Delete Device
     [Arguments]    ${DEVICE_NAME}
     Click Element    //div[@id='table_data']//td[a='${DEVICE_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_DEVICE_BUTTON}
 
 Delete Floor
     [Arguments]    ${FLOOR_NUMBER}
     Click Element    //div[@id='table_data']//td[a='Floor#${FLOOR_NUMBER}']/input
+    Take Screenshot
     Click Button    ${DELETE_FLOOR_BUTTON}
 
 Delete Pay Box
     [Arguments]    ${PAY_BOX_NAME}
     Click Element    //div[@id='table_data']//td[a='${PAY_BOX_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_PAY_BOX_BUTTON}
 
 Delete Post Terminal
     [Arguments]    ${POST_TERMINAL_NAME}
     Click Element    //div[@id='table_data']//td[a='${POST_TERMINAL_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_POST_TERMINAL_BUTTON}
 
 Delete Rack
     [Arguments]    ${RACK_NAME}
     Click Element    //div[@id='table_data']//td[a='${RACK_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_RACK_BUTTON}
 
 Delete Room
     [Arguments]    ${ROOM_NAME}
     Click Element    //div[@id='table_data']//td[a='${ROOM_NAME}']/input
+    Take Screenshot
     Click Button    ${DELETE_ROOM_BUTTON}
 
 Edit ATM
@@ -202,6 +205,7 @@ Edit ATM
     Select From List By Value    ${ATM_PHYSICAL_STATUS_LIST}    ${ATM_PHYSICAL_STATUS}
     Click Link    ${ATM_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Building
@@ -212,6 +216,7 @@ Edit Building
     Input Text    ${BUILDING_NUMBER_FIELD}    ${BUILDING_NUMBER}
     Input Text    ${BUILDING_SQUARE_FIELD}    ${BUILDING_SQUARE}
     Select From List By Value    ${BUILDING_IS_CONNECTED_LIST}    ${BUILDING_IS_CONNECTED}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit City
@@ -220,6 +225,7 @@ Edit City
     Input Text    ${CITY_NAME_FIELD}    ${CITY_NAME}
     Input Text    ${CITY_POPULATION_FIELD}    ${CITY_POPULATION}
     Select From List By Value    ${CITY_IS_REGIONAL_CENTER_LIST}    ${CITY_IS_REGIONAL_CENTER}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Country
@@ -228,6 +234,7 @@ Edit Country
     Input Text    ${COUNTRY_NAME_FIELD}    ${COUNTRY_NAME}
     Select From List By Value    ${COUNTRY_CONTINENT_LIST}    ${COUNTRY_CONTINENT}
     Input Text    ${COUNTRY_LANGUAGE_FIELD}    ${COUNTRY_LANGUAGE}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Device
@@ -247,6 +254,7 @@ Edit Device
     Choose From Navigation Tree
     Click Link    ${DEVICE_NETWORK_ELEMENT_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Floor
@@ -254,6 +262,7 @@ Edit Floor
     Click Link    ${EDIT_LINK}
     Input Text    ${FLOOR_NUMBER_FIELD}    ${FLOOR_NUMBER}
     Input Text    ${FLOOR_SQUARE_FIELD}    ${FLOOR_SQUARE}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Pay Box
@@ -265,6 +274,7 @@ Edit Pay Box
     Select From List By Value    ${PAY_BOX_PHYSICAL_STATUS_LIST}    ${PAY_BOX_PHYSICAL_STATUS}
     Click Link    ${PAY_BOX_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Post Terminal
@@ -277,6 +287,7 @@ Edit Post Terminal
     Select From List By Value    ${POST_TERMINAL_PHYSICAL_STATUS_LIST}    ${POST_TERMINAL_PHYSICAL_STATUS}
     Click Link    ${POST_TERMINAL_LOCATED_IN_SELECT_LINK}
     Choose From Navigation Tree
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Rack
@@ -287,6 +298,7 @@ Edit Rack
     Input Text    ${RACK_LENGTH_FIELD}    ${RACK_LENGTH}
     Input Text    ${RACK_HEIGHT_FIELD}    ${RACK_HEIGHT}
     Select From List By Value    ${RACK_PHYSICAL_STATUS_LIST}    ${RACK_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Edit Room
@@ -294,6 +306,7 @@ Edit Room
     Click Link    ${EDIT_LINK}
     Input Text    ${ROOM_NAME_FIELD}    ${ROOM_NAME}
     Input Text    ${ROOM_SQUARE_FIELD}    ${ROOM_SQUARE}
+    Take Screenshot
     Click Button    ${SAVE_BUTTON}
 
 Get ID Value
@@ -482,6 +495,7 @@ New User Registration
     Input Password    ${REPASSWORD_FIELD}    ${REPASSWORD}
     Input Text    ${EMAIL_FIELD}    ${EMAIL}
     Select From List By Value    ${ROLE_LIST}    ${ROLE}
+    Take Screenshot
     Click Button    ${CONFIRM_REGISTRATION_BUTTON}
 
 Open Building
@@ -521,6 +535,7 @@ Search ATM
     Input Text    ${ATM_CONNECTION_TYPE_FIELD}    ${ATM_CONNECTION_TYPE}
     Input Text    ${ATM_EXTRA_SECURITY_FIELD}    ${ATM_EXTRA_SECURITY}
     Select From List By Value    ${ATM_PHYSICAL_STATUS_LIST}    ${ATM_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -532,15 +547,17 @@ Search Building
     Input Text    ${BUILDING_NUMBER_FIELD}    ${BUILDING_NUMBER}
     Input Text    ${BUILDING_SQUARE_FIELD}    ${BUILDING_SQUARE}
     Select From List By Value    ${BUILDING_IS_CONNECTED_LIST}    ${BUILDING_IS_CONNECTED}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
 Search City
     [Arguments]    ${CURRENT_NAME}    ${CURRENT_POPULATION}    ${IS_REGIONAL_CENTER}
     Go To    ${SEARCH_CITY_LINK}
-    Input Text    ${CITY_NAME_FIELD}    ${CITY_NAME}
-    Input Text    ${CITY_POPULATION_FIELD}    ${CITY_POPULATION}
-    Select From List By Value    ${CITY_IS_REGIONAL_CENTER_LIST}    ${CITY_IS_REGIONAL_CENTER}
+    Input Text    ${CITY_NAME_FIELD}    ${CURRENT_NAME}
+    Input Text    ${CITY_POPULATION_FIELD}    ${CURRENT_POPULATION}
+    Select From List By Value    ${CITY_IS_REGIONAL_CENTER_LIST}    ${IS_REGIONAL_CENTER}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -550,6 +567,7 @@ Search Country
     Input Text    ${COUNTRY_NAME_FIELD}    ${COUNTRY_NAME}
     Select From List By Value    ${COUNTRY_CONTINENT_LIST}    ${COUNTRY_CONTINENT}
     Input Text    ${COUNTRY_LANGUAGE_FIELD}    ${COUNTRY_LANGUAGE}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -565,6 +583,7 @@ Search Device
     Input Text    ${DEVICE_WIDTH_FIELD}    ${DEVICE_WIDTH}
     Input Text    ${DEVICE_LENGTH_FIELD}    ${DEVICE_LENGTH}
     Input Text    ${DEVICE_HEIGHT_FIELD}    ${DEVICE_HEIGHT}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -573,6 +592,7 @@ Search Floor
     Go To    ${SEARCH_FLOOR_LINK}
     Input Text    ${FLOOR_NUMBER_FIELD}    ${FLOOR_NUMBER}
     Input Text    ${FLOOR_SQUARE_FIELD}    ${FLOOR_SQUARE}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -583,6 +603,7 @@ Search Pay Box
     Input Text    ${PAY_BOX_SECURE_PROTOCOL_FIELD}    ${PAY_BOX_SECURE_PROTOCOL}
     Input Text    ${PAY_BOX_DISPLAY_SIZE_FIELD}    ${PAY_BOX_DISPLAY_SIZE}
     Select From List By Value    ${PAY_BOX_PHYSICAL_STATUS_LIST}    ${PAY_BOX_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -594,6 +615,7 @@ Search Post Terminal
     Input Text    ${POST_TERMINAL_LENGTH_FIELD}    ${POST_TERMINAL_LENGTH}
     Input Text    ${POST_TERMINAL_HEIGHT_FIELD}    ${POST_TERMINAL_HEIGHT}
     Select From List By Value    ${POST_TERMINAL_PHYSICAL_STATUS_LIST}    ${POST_TERMINAL_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -605,6 +627,7 @@ Search Rack
     Input Text    ${RACK_LENGTH_FIELD}    ${RACK_LENGTH}
     Input Text    ${RACK_HEIGHT_FIELD}    ${RACK_HEIGHT}
     Select From List By Value    ${RACK_PHYSICAL_STATUS_LIST}    ${RACK_PHYSICAL_STATUS}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -613,6 +636,7 @@ Search Room
     Go To    ${SEARCH_ROOM_LINK}
     Input Text    ${ROOM_NAME_FIELD}    ${ROOM_NAME}
     Input Text    ${ROOM_SQUARE_FIELD}    ${ROOM_SQUARE}
+    Take Screenshot
     Click Button    ${SEARCH_BUTTON}
     Set Browser Implicit Wait    3
 
@@ -620,4 +644,5 @@ Take Screenshot
     ${TITLE}=    Get Title
     ${BOOL}=    Is Error Page    ${TITLE}
     Run Keyword If    ${BOOL}    Click Element    ${OPEN_STACK_TRACE_LINK}
-    Capture Page Screenshot    ${TITLE}
+    ${DATETIME}=    Get Current Date
+    Capture Page Screenshot    ${TEST NAME}-${TITLE}-${DATETIME}.png

@@ -1,0 +1,431 @@
+*** Settings ***
+Library           Selenium2Library    run_on_failure=Nothing
+Library           String
+Library           Collections
+Library           StringHandler
+Resource          ../Project_URLs.txt
+Resource          ../locators/Login_Page_Locators.txt
+Resource          ../locators/Registration_Page_Locators.txt
+Resource          ../locators/Start_Page_Locators.txt
+Resource          ../locators/Inventory_Page_Locators.txt
+Resource          ../locators/Navigation_Tree_Page_Locators.txt
+Resource          ../locators/Searching_Locators.txt
+Resource          OperationKeywords.txt
+Resource          LoginTesting.txt
+Resource          RegistrationTesting.txt
+Resource          CreateCountryTesting.txt
+Resource          CreateCityTesting.txt
+Resource          CreateBuildingTesting.txt
+Resource          CreateFloorTesting.txt
+Resource          CreateRoomTesting.txt
+Resource          CreateRackTesting.txt
+Resource          CreateDeviceTesting.txt
+Resource          CreateATMTesting.txt
+Resource          CreatePayBoxTesting.txt
+Resource          CreatePostTerminalTesting.txt
+Resource          SearchingCountryTesting.txt
+Resource          SearchingCityTesting.txt
+Resource          SearchingBuildingTesting.txt
+Resource          SearchingFloorTesting.txt
+Resource          SearchingRoomTesting.txt
+Resource          SearchingRackTesting.txt
+Resource          SearchingDeviceTesting.txt
+Resource          SearchingPostTerminalTesting.txt
+Resource          SearchingPayBoxTesting.txt
+Resource          SearchingATMTesting.txt
+Resource          EditCountryTesting.txt
+Resource          EditCityTesting.txt
+Resource          EditBuildingTesting.txt
+Resource          EditFloorTesting.txt
+Resource          EditRoomTesting.txt
+Resource          EditRackTesting.txt
+Resource          EditDeviceTesting.txt
+Resource          EditPostTerminalTesting.txt
+Resource          EditPayBoxTesting.txt
+Resource          EditATMTesting.txt
+Resource          DeleteTesting.txt
+
+*** Keywords ***
+Register New User Using Data From Row
+    [Arguments]    ${INDEX}
+    ${Current_Username} =    RegistrationTesting.Get Username    ${INDEX}
+    ${Current_Password} =    RegistrationTesting.Get Password    ${INDEX}
+    ${Current_Repassword} =    RegistrationTesting.Get Repassword    ${INDEX}
+    ${Current_Email} =    RegistrationTesting.Get Email    ${INDEX}
+    ${Current_Role} =    RegistrationTesting.Get Role    ${INDEX}
+    New User Registration    ${Current_Username}    ${Current_Password}    ${Current_Repassword}    ${Current_Email}    ${Current_Role}
+
+Check Registration Using Data From Row
+    [Arguments]    ${INDEX}
+    ${Current_URL} =    RegistrationTesting.Get Expected URL    ${INDEX}
+    ${Current_Msg} =    RegistrationTesting.Get Message    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${Current_URL}
+    Run Keyword And Continue On Failure    Page Should Contain    ${Current_Msg}    INFO
+
+Login To Account Using Data From Row
+    [Arguments]    ${INDEX}
+    ${Current_Username}=    LoginTesting.Get Login    ${INDEX}
+    ${Current_Password}=    LoginTesting.Get Password    ${INDEX}
+    Login    ${Current_Username}    ${Current_Password}
+
+Check Login Into Account Using Data From Row
+    [Arguments]    ${INDEX}
+    ${Current_URL}=    LoginTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${Current_URL}
+
+Create Country Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY_NAME}=    CreateCountryTesting.Get Name    ${INDEX}
+    ${CURRENT_COUNTRY_CONTINENT}=    CreateCountryTesting.Get Continent    ${INDEX}
+    ${CURRENT_COUNTRY_LANGUAGE}=    CreateCountryTesting.Get Language    ${INDEX}
+    Go To    ${INVENTORY_PAGE_URL}
+    Create Country    ${CURRENT_COUNTRY_NAME}    ${CURRENT_COUNTRY_CONTINENT}    ${CURRENT_COUNTRY_LANGUAGE}
+
+Check Country Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY_NAME}=    CreateCountryTesting.Get Name    ${INDEX}
+    ${CURRENT_COUNTRY_CONTINENT}=    CreateCountryTesting.Get Continent    ${INDEX}
+    ${CURRENT_COUNTRY_LANGUAGE}=    CreateCountryTesting.Get Language    ${INDEX}
+    ${CURRENT_URL}=    CreateCountryTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${COUNTRY_MAIN_URL}'    Page Should Contain    ${CURRENT_COUNTRY_NAME}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${COUNTRY_MAIN_URL}'    Page Should Contain    ${CURRENT_COUNTRY_CONTINENT}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${COUNTRY_MAIN_URL}'    Page Should Contain    ${CURRENT_COUNTRY_LANGUAGE}
+
+Create City Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateCityTesting.Get Country    ${INDEX}
+    ${CURRENT_NAME}=    CreateCityTesting.Get Name    ${INDEX}
+    ${CURRENT_POPULATION}=    CreateCityTesting.Get Population    ${INDEX}
+    ${IS_REGIONAL_CENTER}=    CreateCityTesting.Is Regional Center    ${INDEX}
+    Go To Cities Tab    ${CURRENT_COUNTRY}
+    Create City    ${CURRENT_NAME}    ${CURRENT_POPULATION}    ${IS_REGIONAL_CENTER}
+
+Check City Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateCityTesting.Get Country    ${INDEX}
+    ${CURRENT_NAME}=    CreateCityTesting.Get Name    ${INDEX}
+    ${CURRENT_POPULATION}=    CreateCityTesting.Get Population    ${INDEX}
+    ${IS_REGIONAL_CENTER}=    CreateCityTesting.Is Regional Center    ${INDEX}
+    ${CURRENT_URL}=    CreateCityTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${CITY_MAIN_URL}'    Page Should Contain    ${CURRENT_NAME}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${CITY_MAIN_URL}'    Page Should Contain    ${CURRENT_POPULATION}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${CITY_MAIN_URL}'    Page Should Contain    ${IS_REGIONAL_CENTER}
+
+Create Building Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateBuildingTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateBuildingTesting.Get City    ${INDEX}
+    ${CURRENT_NAME}=    CreateBuildingTesting.Get Name    ${INDEX}
+    ${CURRENT_STREET}=    CreateBuildingTesting.Get Street    ${INDEX}
+    ${CURRENT_NUMBER}=    CreateBuildingTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateBuildingTesting.Get Square    ${INDEX}
+    ${IS_CONNECTED}=    CreateBuildingTesting.Is Connected    ${INDEX}
+    Go To Buildings Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}
+    Create Building    ${CURRENT_NAME}    ${CURRENT_STREET}    ${CURRENT_NUMBER}    ${CURRENT_SQUARE}    ${IS_CONNECTED}
+
+Check Building Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateBuildingTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateBuildingTesting.Get City    ${INDEX}
+    ${CURRENT_NAME}=    CreateBuildingTesting.Get Name    ${INDEX}
+    ${CURRENT_STREET}=    CreateBuildingTesting.Get Street    ${INDEX}
+    ${CURRENT_NUMBER}=    CreateBuildingTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateBuildingTesting.Get Square    ${INDEX}
+    ${IS_CONNECTED}=    CreateBuildingTesting.Is Connected    ${INDEX}
+    ${CURRENT_URL}=    CreateBuildingTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${BUILDING_MAIN_URL}'    Page Should Contain    ${CURRENT_NAME}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${BUILDING_MAIN_URL}'    Page Should Contain    ${CURRENT_STREET}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${BUILDING_MAIN_URL}'    Page Should Contain    ${CURRENT_NUMBER}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${BUILDING_MAIN_URL}'    Page Should Contain    ${CURRENT_SQUARE}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${BUILDING_MAIN_URL}'    Page Should Contain    ${IS_CONNECTED}
+
+Create Floor Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateFloorTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateFloorTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateFloorTesting.Get Building    ${INDEX}
+    ${CURRENT_NUMBER}=    CreateFloorTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateFloorTesting.Get Square    ${INDEX}
+    Go To Floors Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}
+    Create Floor    ${CURRENT_NUMBER}    ${CURRENT_SQUARE}
+
+Check Floor Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateFloorTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateFloorTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateFloorTesting.Get Building    ${INDEX}
+    ${CURRENT_NUMBER}=    CreateFloorTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateFloorTesting.Get Square    ${INDEX}
+    ${CURRENT_URL}=    CreateFloorTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${FLOOR_MAIN_URL}'    Page Should Contain    ${CURRENT_NUMBER}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${FLOOR_MAIN_URL}'    Page Should Contain    ${CURRENT_SQUARE}
+
+Create Room Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateRoomTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateRoomTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateRoomTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreateRoomTesting.Get Floor    ${INDEX}
+    ${CURRENT_NAME}=    CreateRoomTesting.Get Name    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateRoomTesting.Get Square    ${INDEX}
+    Go To Rooms Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}
+    Create Room    ${CURRENT_NAME}    ${CURRENT_SQUARE}
+
+Check Room Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateRoomTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateRoomTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateRoomTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreateRoomTesting.Get Floor    ${INDEX}
+    ${CURRENT_NAME}=    CreateRoomTesting.Get Name    ${INDEX}
+    ${CURRENT_SQUARE}=    CreateRoomTesting.Get Square    ${INDEX}
+    ${CURRENT_URL}=    CreateRoomTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${ROOM_MAIN_URL}'    Page Should Contain    ${CURRENT_NAME}
+    Run Keyword And Continue On Failure    Run Keyword If    '${CURRENT_URL}' == '${ROOM_MAIN_URL}'    Page Should Contain    ${CURRENT_SQUARE}
+
+Create Rack Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateRackTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateRackTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateRackTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreateRackTesting.Get Floor    ${INDEX}
+    ${CURRENT_ROOM}=    CreateRackTesting.Get Room    ${INDEX}
+    ${CURRENT_NAME}=    CreateRackTesting.Get Name    ${INDEX}
+    ${CURRENT_WIDTH}=    CreateRackTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    CreateRackTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    CreateRackTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    CreateRackTesting.Get Physical Status    ${INDEX}
+    Go To Racks Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}    ${CURRENT_ROOM}
+    Create Rack    ${CURRENT_NAME}    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Rack Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreateRackTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Create Device Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateDeviceTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateDeviceTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateDeviceTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreateDeviceTesting.Get Floor    ${INDEX}
+    ${CURRENT_ROOM}=    CreateDeviceTesting.Get Room    ${INDEX}
+    ${CURRENT_RACK}=    CreateDeviceTesting.Get Rack    ${INDEX}
+    ${CURRENT_NAME}=    CreateDeviceTesting.Get Name    ${INDEX}
+    ${CURRENT_MAC_ADDRESS}=    CreateDeviceTesting.Get MAC Address    ${INDEX}
+    ${CURRENT_RAM}=    CreateDeviceTesting.Get RAM    ${INDEX}
+    ${CURRENT_CPU}=    CreateDeviceTesting.Get CPU    ${INDEX}
+    ${CURRENT_IP_ADDRESS}=    CreateDeviceTesting.Get IP Address    ${INDEX}
+    ${CURRENT_WIDTH}=    CreateDeviceTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    CreateDeviceTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    CreateDeviceTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    CreateDeviceTesting.Get Physical Status    ${INDEX}
+    ${CURRENT_URL}=    CreateDeviceTesting.Get Expected URL    ${INDEX}
+    Go To Devices Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}    ${CURRENT_ROOM}    ${CURRENT_RACK}
+    Create Device    ${CURRENT_NAME}    ${CURRENT_MAC_ADDRESS}    ${CURRENT_RAM}    ${CURRENT_CPU}    ${CURRENT_IP_ADDRESS}    ${CURRENT_PHYSICAL_STATUS}
+    ...    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}
+
+Check Device Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreateDeviceTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Create Post Terminal Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreatePostTerminalTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreatePostTerminalTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreatePostTerminalTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreatePostTerminalTesting.Get Floor    ${INDEX}
+    ${CURRENT_ROOM}=    CreatePostTerminalTesting.Get Room    ${INDEX}
+    ${CURRENT_RACK}=    CreatePostTerminalTesting.Get Rack    ${INDEX}
+    ${CURRENT_NAME}=    CreatePostTerminalTesting.Get Name    ${INDEX}
+    ${CURRENT_WIDTH}=    CreatePostTerminalTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    CreatePostTerminalTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    CreatePostTerminalTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    CreatePostTerminalTesting.Get Physical Status    ${INDEX}
+    Go To Post Terminals Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}    ${CURRENT_ROOM}    ${CURRENT_RACK}
+    Create Post Terminal    ${CURRENT_NAME}    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Post Terminal Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreatePostTerminalTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Create Pay Box Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreatePayBoxTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreatePayBoxTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreatePayBoxTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreatePayBoxTesting.Get Floor    ${INDEX}
+    ${CURRENT_ROOM}=    CreatePayBoxTesting.Get Room    ${INDEX}
+    ${CURRENT_RACK}=    CreatePayBoxTesting.Get Rack    ${INDEX}
+    ${CURRENT_NAME}=    CreatePayBoxTesting.Get Name    ${INDEX}
+    ${CURRENT_SECURE_PROTOCOL}=    CreatePayBoxTesting.Get Secure Protocol    ${INDEX}
+    ${CURRENT_DISPLAY_SIZE}=    CreatePayBoxTesting.Get Display Size    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    CreatePayBoxTesting.Get Physical Status    ${INDEX}
+    Go To Pay Boxes Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}    ${CURRENT_ROOM}    ${CURRENT_RACK}
+    Create Pay Box    ${CURRENT_NAME}    ${CURRENT_SECURE_PROTOCOL}    ${CURRENT_DISPLAY_SIZE}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Pay Box Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreatePayBoxTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Create ATM Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY}=    CreateATMTesting.Get Country    ${INDEX}
+    ${CURRENT_CITY}=    CreateATMTesting.Get City    ${INDEX}
+    ${CURRENT_BUILDING}=    CreateATMTesting.Get Building    ${INDEX}
+    ${CURRENT_FLOOR}=    CreateATMTesting.Get Floor    ${INDEX}
+    ${CURRENT_ROOM}=    CreateATMTesting.Get Room    ${INDEX}
+    ${CURRENT_RACK}=    CreateATMTesting.Get Rack    ${INDEX}
+    ${CURRENT_NAME}=    CreateATMTesting.Get Name    ${INDEX}
+    ${CURRENT_CONNECTION_TYPE}=    CreateATMTesting.Get Connection Type    ${INDEX}
+    ${CURRENT_EXTRA_SECURITY}=    CreateATMTesting.Get Extra Security    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    CreateATMTesting.Get Physical Status    ${INDEX}
+    Go To ATMs Tab    ${CURRENT_COUNTRY}    ${CURRENT_CITY}    ${CURRENT_BUILDING}    ${CURRENT_FLOOR}    ${CURRENT_ROOM}    ${CURRENT_RACK}
+    Create ATM    ${CURRENT_NAME}    ${CURRENT_CONNECTION_TYPE}    ${CURRENT_EXTRA_SECURITY}    ${CURRENT_PHYSICAL_STATUS}
+
+Check ATM Creation Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreateATMTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Country Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_COUNTRY_NAME}=    SearchingCountryTesting.Get Name    ${INDEX}
+    ${CURRENT_COUNTRY_CONTINENT}=    SearchingCountryTesting.Get Continent    ${INDEX}
+    ${CURRENT_COUNTRY_LANGUAGE}=    SearchingCountryTesting.Get Language    ${INDEX}
+    Search Country    ${CURRENT_COUNTRY_NAME}    ${CURRENT_COUNTRY_CONTINENT}    ${CURRENT_COUNTRY_LANGUAGE}
+
+Check Country Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    CreateCountryTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search City Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingCityTesting.Get Name    ${INDEX}
+    ${CURRENT_POPULATION}=    SearchingCityTesting.Get Population    ${INDEX}
+    ${IS_REGIONAL_CENTER}=    SearchingCityTesting.Is Regional Center    ${INDEX}
+    Search City    ${CURRENT_NAME}    ${CURRENT_POPULATION}    ${IS_REGIONAL_CENTER}
+
+Check City Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingCityTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Building Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingBuildingTesting.Get Name    ${INDEX}
+    ${CURRENT_STREET}=    SearchingBuildingTesting.Get Street    ${INDEX}
+    ${CURRENT_NUMBER}=    SearchingBuildingTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    SearchingBuildingTesting.Get Square    ${INDEX}
+    ${IS_CONNECTED}=    SearchingBuildingTesting.Is Connected    ${INDEX}
+    Search Building    ${CURRENT_NAME}    ${CURRENT_STREET}    ${CURRENT_NUMBER}    ${CURRENT_SQUARE}    ${IS_CONNECTED}
+
+Check Building Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingBuildingTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Floor Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NUMBER}=    SearchingFloorTesting.Get Number    ${INDEX}
+    ${CURRENT_SQUARE}=    SearchingFloorTesting.Get Square    ${INDEX}
+    Search Floor    ${CURRENT_NUMBER}    ${CURRENT_SQUARE}
+
+Check Floor Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingFloorTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Room Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingRoomTesting.Get Name    ${INDEX}
+    ${CURRENT_SQUARE}=    SearchingRoomTesting.Get Square    ${INDEX}
+    Search Room    ${CURRENT_NAME}    ${CURRENT_SQUARE}
+
+Check Room Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingRoomTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Rack Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingRackTesting.Get Name    ${INDEX}
+    ${CURRENT_WIDTH}=    SearchingRackTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    SearchingRackTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    SearchingRackTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    SearchingRackTesting.Get Physical Status    ${INDEX}
+    ${CURRENT_URL}=    SearchingRackTesting.Get Expected URL    ${INDEX}
+    Search Rack    ${CURRENT_NAME}    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Rack Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingRackTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Device Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingDeviceTesting.Get Name    ${INDEX}
+    ${CURRENT_MAC_ADDRESS}=    SearchingDeviceTesting.Get MAC Address    ${INDEX}
+    ${CURRENT_RAM}=    SearchingDeviceTesting.Get RAM    ${INDEX}
+    ${CURRENT_CPU}=    SearchingDeviceTesting.Get CPU    ${INDEX}
+    ${CURRENT_IP_ADDRESS}=    SearchingDeviceTesting.Get IP Address    ${INDEX}
+    ${CURRENT_WIDTH}=    SearchingDeviceTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    SearchingDeviceTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    SearchingDeviceTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    SearchingDeviceTesting.Get Physical Status    ${INDEX}
+    Search Device    ${CURRENT_NAME}    ${CURRENT_MAC_ADDRESS}    ${CURRENT_RAM}    ${CURRENT_CPU}    ${CURRENT_IP_ADDRESS}    ${CURRENT_PHYSICAL_STATUS}
+    ...    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}
+
+Check Device Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingDeviceTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Post Terminal Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingPostTerminalTesting.Get Name    ${INDEX}
+    ${CURRENT_WIDTH}=    SearchingPostTerminalTesting.Get Width    ${INDEX}
+    ${CURRENT_LENGTH}=    SearchingPostTerminalTesting.Get Length    ${INDEX}
+    ${CURRENT_HEIGHT}=    SearchingPostTerminalTesting.Get Height    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    SearchingPostTerminalTesting.Get Physical Status    ${INDEX}
+    Search Post Terminal    ${CURRENT_NAME}    ${CURRENT_WIDTH}    ${CURRENT_LENGTH}    ${CURRENT_HEIGHT}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Post Terminal Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingPostTerminalTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search Pay Box Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingPayBoxTesting.Get Name    ${INDEX}
+    ${CURRENT_SECURE_PROTOCOL}=    SearchingPayBoxTesting.Get Secure Protocol    ${INDEX}
+    ${CURRENT_DISPLAY_SIZE}=    SearchingPayBoxTesting.Get Display Size    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    SearchingPayBoxTesting.Get Physical Status    ${INDEX}
+    Search Pay Box    ${CURRENT_NAME}    ${CURRENT_SECURE_PROTOCOL}    ${CURRENT_DISPLAY_SIZE}    ${CURRENT_PHYSICAL_STATUS}
+
+Check Pay Box Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingPayBoxTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
+
+Search ATM Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_NAME}=    SearchingATMTesting.Get Name    ${INDEX}
+    ${CURRENT_CONNECTION_TYPE}=    SearchingATMTesting.Get Connection Type    ${INDEX}
+    ${CURRENT_EXTRA_SECURITY}=    SearchingATMTesting.Get Extra Security    ${INDEX}
+    ${CURRENT_PHYSICAL_STATUS}=    SearchingATMTesting.Get Physical Status    ${INDEX}
+    Search ATM    ${CURRENT_NAME}    ${CURRENT_CONNECTION_TYPE}    ${CURRENT_EXTRA_SECURITY}    ${CURRENT_PHYSICAL_STATUS}
+
+Check ATM Searching Using Data From Row
+    [Arguments]    ${INDEX}
+    ${CURRENT_URL}=    SearchingATMTesting.Get Expected URL    ${INDEX}
+    Run Keyword And Continue On Failure    Location Should Contain    ${CURRENT_URL}
