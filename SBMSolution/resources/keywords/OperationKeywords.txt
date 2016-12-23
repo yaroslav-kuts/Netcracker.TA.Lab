@@ -644,5 +644,4 @@ Take Screenshot
     ${TITLE}=    Get Title
     ${BOOL}=    Is Error Page    ${TITLE}
     Run Keyword If    ${BOOL}    Click Element    ${OPEN_STACK_TRACE_LINK}
-    ${DATETIME}=    Get Current Date
-    Capture Page Screenshot    ${TEST NAME}-${TITLE}-${DATETIME}.png
+    Capture Page Screenshot    ${TEST NAME}-${TITLE}.png

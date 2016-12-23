@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0 (Jython 2.7.0 on java1.8.0_20)" generated="20161223 14:38:24.561">
+<suite source="C:\Projects\TA.Lab.YaroslavKuts\SBMSolution\tests\WebTest.robot" name="WebTest" id="s1">
+<test name="Registration Test" id="s1-t1">
+<kw library="Selenium2Library" name="Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${REGISTRATION_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:37.467">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'</msg>
+<status endtime="20161223 14:38:43.133" starttime="20161223 14:38:37.459" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Registration Dataset Length">
+<assign>
+<var>${NumOfRows}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Number Of Filled Rows">
+<assign>
+<var>${LENGTH}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.268">${LENGTH} = 4</msg>
+<status endtime="20161223 14:38:43.270" starttime="20161223 14:38:43.233" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.276">${NumOfRows} = 4</msg>
+<status endtime="20161223 14:38:43.278" starttime="20161223 14:38:43.190" status="PASS"></status>
+</kw>
+<kw type="for" name="${INDEX} IN RANGE [ 1 | ${NumOfRows} ]">
+<kw type="foritem" name="${INDEX} = 1">
+<kw library="BaseKeywords" name="Register New User Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Username">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${USERNAME}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.396">${USERNAME} = correct</msg>
+<status endtime="20161223 14:38:43.398" starttime="20161223 14:38:43.357" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Generate String">
+<arguments>
+<arg>${USERNAME}</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.455">${VALUE} = user1IPjA4</msg>
+<status endtime="20161223 14:38:43.457" starttime="20161223 14:38:43.429" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.463">${Current_Username} = user1IPjA4</msg>
+<status endtime="20161223 14:38:43.465" starttime="20161223 14:38:43.346" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Password">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.560">${VALUE} = pass12%U</msg>
+<status endtime="20161223 14:38:43.563" starttime="20161223 14:38:43.545" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.568">${Current_Password} = pass12%U</msg>
+<status endtime="20161223 14:38:43.571" starttime="20161223 14:38:43.521" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Repassword">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Repassword}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.632">${VALUE} = pass12%U</msg>
+<status endtime="20161223 14:38:43.637" starttime="20161223 14:38:43.591" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.643">${Current_Repassword} = pass12%U</msg>
+<status endtime="20161223 14:38:43.687" starttime="20161223 14:38:43.576" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Email">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Email}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.769">${VALUE} = user@mail.com</msg>
+<status endtime="20161223 14:38:43.772" starttime="20161223 14:38:43.750" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.776">${Current_Email} = user@mail.com</msg>
+<status endtime="20161223 14:38:43.777" starttime="20161223 14:38:43.729" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Role">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Role}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>4</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:43.817">${VALUE} = RW</msg>
+<status endtime="20161223 14:38:43.830" starttime="20161223 14:38:43.789" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:43.835">${Current_Role} = RW</msg>
+<status endtime="20161223 14:38:43.836" starttime="20161223 14:38:43.781" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="New User Registration">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+<arg>${Current_Repassword}</arg>
+<arg>${Current_Email}</arg>
+<arg>${Current_Role}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Go To">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${REGISTRATION_PAGE_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:43.869">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'</msg>
+<status endtime="20161223 14:38:44.422" starttime="20161223 14:38:43.863" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:44.434">Typing text 'user1IPjA4' into text field 'id=registerForm:username'</msg>
+<status endtime="20161223 14:38:45.142" starttime="20161223 14:38:44.427" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:45.170">Typing password into text field 'id=registerForm:password'</msg>
+<status endtime="20161223 14:38:45.703" starttime="20161223 14:38:45.147" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${REPASSWORD_FIELD}</arg>
+<arg>${REPASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:45.714">Typing password into text field 'id=registerForm:confirmPassword'</msg>
+<status endtime="20161223 14:38:46.835" starttime="20161223 14:38:45.707" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${EMAIL_FIELD}</arg>
+<arg>${EMAIL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:46.845">Typing text 'user@mail.com' into text field 'id=registerForm:email'</msg>
+<status endtime="20161223 14:38:47.611" starttime="20161223 14:38:46.840" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Select From List By Value">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>${ROLE_LIST}</arg>
+<arg>${ROLE}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:47.624">Selecting value(s) 'RW' from list 'id=registerForm:role'.</msg>
+<status endtime="20161223 14:38:48.755" starttime="20161223 14:38:47.615" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:49.040">${TITLE} = Registration</msg>
+<status endtime="20161223 14:38:49.041" starttime="20161223 14:38:48.772" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:49.050">${BOOL} = False</msg>
+<status endtime="20161223 14:38:49.051" starttime="20161223 14:38:49.044" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:38:49.061" starttime="20161223 14:38:49.054" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:38:51.065">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Registration.png"&gt;&lt;img src="Registration%20Test-Registration.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:38:51.069" starttime="20161223 14:38:49.127" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:51.072" starttime="20161223 14:38:48.758" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Click Button">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${CONFIRM_REGISTRATION_BUTTON}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:51.090">Clicking button 'name=registerForm:j_idt25'.</msg>
+<status endtime="20161223 14:38:51.632" starttime="20161223 14:38:51.085" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:51.636" starttime="20161223 14:38:43.843" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:51.638" starttime="20161223 14:38:43.335" status="PASS"></status>
+</kw>
+<kw library="BaseKeywords" name="Check Registration Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Expected URL">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_URL}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:51.666">${VALUE} = http://s1.web.sumdu.edu.ua:8080/login.jsp</msg>
+<status endtime="20161223 14:38:51.668" starttime="20161223 14:38:51.660" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:51.672">${Current_URL} = http://s1.web.sumdu.edu.ua:8080/login.jsp</msg>
+<status endtime="20161223 14:38:51.673" starttime="20161223 14:38:51.652" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Message">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Msg}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:51.693">${VALUE} = You have successfully registered</msg>
+<status endtime="20161223 14:38:51.694" starttime="20161223 14:38:51.685" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:51.698">${Current_Msg} = You have successfully registered</msg>
+<status endtime="20161223 14:38:51.699" starttime="20161223 14:38:51.676" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Location Should Contain</arg>
+<arg>${Current_URL}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Location Should Contain">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${Current_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:51.776">Current location contains 'http://s1.web.sumdu.edu.ua:8080/login.jsp'.</msg>
+<status endtime="20161223 14:38:51.778" starttime="20161223 14:38:51.711" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:51.780" starttime="20161223 14:38:51.704" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Page Should Contain</arg>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<kw library="Selenium2Library" name="Page Should Contain">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:51.962">Current page contains text 'You have successfully registered'.</msg>
+<status endtime="20161223 14:38:51.998" starttime="20161223 14:38:51.794" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:52.000" starttime="20161223 14:38:51.785" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:52.002" starttime="20161223 14:38:51.642" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.082">${TITLE} = Login Page</msg>
+<status endtime="20161223 14:38:52.083" starttime="20161223 14:38:52.013" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.096">${BOOL} = False</msg>
+<status endtime="20161223 14:38:52.108" starttime="20161223 14:38:52.087" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:38:52.118" starttime="20161223 14:38:52.112" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:38:52.508">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Login%20Page.png"&gt;&lt;img src="Registration%20Test-Login%20Page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:38:52.510" starttime="20161223 14:38:52.151" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:52.513" starttime="20161223 14:38:52.007" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:38:52.514" starttime="20161223 14:38:43.331" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${INDEX} = 2">
+<kw library="BaseKeywords" name="Register New User Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Username">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${USERNAME}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.569">${USERNAME} = 5.0</msg>
+<status endtime="20161223 14:38:52.570" starttime="20161223 14:38:52.544" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Generate String">
+<arguments>
+<arg>${USERNAME}</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.578">${VALUE} = 5.0</msg>
+<status endtime="20161223 14:38:52.579" starttime="20161223 14:38:52.573" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:52.583">${Current_Username} = 5.0</msg>
+<status endtime="20161223 14:38:52.584" starttime="20161223 14:38:52.537" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Password">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.631">${VALUE} = pass12%U</msg>
+<status endtime="20161223 14:38:52.632" starttime="20161223 14:38:52.625" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:52.634">${Current_Password} = pass12%U</msg>
+<status endtime="20161223 14:38:52.635" starttime="20161223 14:38:52.618" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Repassword">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Repassword}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.656">${VALUE} = pass12%U</msg>
+<status endtime="20161223 14:38:52.658" starttime="20161223 14:38:52.650" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:52.662">${Current_Repassword} = pass12%U</msg>
+<status endtime="20161223 14:38:52.666" starttime="20161223 14:38:52.638" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Email">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Email}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.683">${VALUE} = user@mail.com</msg>
+<status endtime="20161223 14:38:52.684" starttime="20161223 14:38:52.677" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:52.687">${Current_Email} = user@mail.com</msg>
+<status endtime="20161223 14:38:52.688" starttime="20161223 14:38:52.670" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Role">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Role}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>4</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:38:52.714">${VALUE} = RW</msg>
+<status endtime="20161223 14:38:52.715" starttime="20161223 14:38:52.700" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:38:52.718">${Current_Role} = RW</msg>
+<status endtime="20161223 14:38:52.720" starttime="20161223 14:38:52.691" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="New User Registration">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+<arg>${Current_Repassword}</arg>
+<arg>${Current_Email}</arg>
+<arg>${Current_Role}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Go To">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${REGISTRATION_PAGE_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:52.737">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'</msg>
+<status endtime="20161223 14:38:52.993" starttime="20161223 14:38:52.733" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:53.011">Typing text '5.0' into text field 'id=registerForm:username'</msg>
+<status endtime="20161223 14:38:53.353" starttime="20161223 14:38:53.005" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:53.362">Typing password into text field 'id=registerForm:password'</msg>
+<status endtime="20161223 14:38:53.649" starttime="20161223 14:38:53.357" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${REPASSWORD_FIELD}</arg>
+<arg>${REPASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:53.662">Typing password into text field 'id=registerForm:confirmPassword'</msg>
+<status endtime="20161223 14:38:53.914" starttime="20161223 14:38:53.658" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${EMAIL_FIELD}</arg>
+<arg>${EMAIL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:53.921">Typing text 'user@mail.com' into text field 'id=registerForm:email'</msg>
+<status endtime="20161223 14:38:59.376" starttime="20161223 14:38:53.917" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Select From List By Value">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>${ROLE_LIST}</arg>
+<arg>${ROLE}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:38:59.387">Selecting value(s) 'RW' from list 'id=registerForm:role'.</msg>
+<status endtime="20161223 14:39:00.068" starttime="20161223 14:38:59.381" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:00.127">${TITLE} = Registration</msg>
+<status endtime="20161223 14:39:00.128" starttime="20161223 14:39:00.077" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:00.137">${BOOL} = False</msg>
+<status endtime="20161223 14:39:00.139" starttime="20161223 14:39:00.132" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:39:00.151" starttime="20161223 14:39:00.142" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:39:00.749">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Registration.png"&gt;&lt;img src="Registration%20Test-Registration.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:39:00.751" starttime="20161223 14:39:00.156" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:00.753" starttime="20161223 14:39:00.071" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Click Button">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${CONFIRM_REGISTRATION_BUTTON}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:00.765">Clicking button 'name=registerForm:j_idt25'.</msg>
+<status endtime="20161223 14:39:01.520" starttime="20161223 14:39:00.756" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:01.522" starttime="20161223 14:38:52.723" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:01.524" starttime="20161223 14:38:52.525" status="PASS"></status>
+</kw>
+<kw library="BaseKeywords" name="Check Registration Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Expected URL">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_URL}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:01.553">${VALUE} = http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml</msg>
+<status endtime="20161223 14:39:01.554" starttime="20161223 14:39:01.538" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:01.557">${Current_URL} = http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml</msg>
+<status endtime="20161223 14:39:01.558" starttime="20161223 14:39:01.531" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Message">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Msg}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:01.574">${VALUE} = Login must be alphanumeric string with length =&gt; 6 and &lt;= 50</msg>
+<status endtime="20161223 14:39:01.576" starttime="20161223 14:39:01.567" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:01.579">${Current_Msg} = Login must be alphanumeric string with length =&gt; 6 and &lt;= 50</msg>
+<status endtime="20161223 14:39:01.580" starttime="20161223 14:39:01.560" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Location Should Contain</arg>
+<arg>${Current_URL}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Location Should Contain">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${Current_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:01.621">Current location contains 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'.</msg>
+<status endtime="20161223 14:39:01.623" starttime="20161223 14:39:01.588" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:01.624" starttime="20161223 14:39:01.583" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Page Should Contain</arg>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<kw library="Selenium2Library" name="Page Should Contain">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:01.730">Current page contains text 'Login must be alphanumeric string with length =&gt; 6 and &lt;= 50'.</msg>
+<status endtime="20161223 14:39:01.732" starttime="20161223 14:39:01.635" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:01.733" starttime="20161223 14:39:01.627" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:01.735" starttime="20161223 14:39:01.526" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:01.794">${TITLE} = Registration</msg>
+<status endtime="20161223 14:39:01.795" starttime="20161223 14:39:01.748" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:01.802">${BOOL} = False</msg>
+<status endtime="20161223 14:39:01.803" starttime="20161223 14:39:01.798" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:39:01.811" starttime="20161223 14:39:01.806" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:39:02.245">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Registration.png"&gt;&lt;img src="Registration%20Test-Registration.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:39:02.248" starttime="20161223 14:39:01.813" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:02.250" starttime="20161223 14:39:01.739" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:02.250" starttime="20161223 14:38:52.515" status="PASS"></status>
+</kw>
+<kw type="foritem" name="${INDEX} = 3">
+<kw library="BaseKeywords" name="Register New User Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Username">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${USERNAME}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.275">${USERNAME} = correct</msg>
+<status endtime="20161223 14:39:02.276" starttime="20161223 14:39:02.270" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Generate String">
+<arguments>
+<arg>${USERNAME}</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.283">${VALUE} = user1joNEy</msg>
+<status endtime="20161223 14:39:02.283" starttime="20161223 14:39:02.278" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:02.286">${Current_Username} = user1joNEy</msg>
+<status endtime="20161223 14:39:02.286" starttime="20161223 14:39:02.264" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Password">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.306">${VALUE} = pass12%U</msg>
+<status endtime="20161223 14:39:02.307" starttime="20161223 14:39:02.295" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:02.309">${Current_Password} = pass12%U</msg>
+<status endtime="20161223 14:39:02.310" starttime="20161223 14:39:02.289" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Repassword">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Repassword}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>2</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.336">${VALUE} = pass55%U</msg>
+<status endtime="20161223 14:39:02.338" starttime="20161223 14:39:02.318" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:02.340">${Current_Repassword} = pass55%U</msg>
+<status endtime="20161223 14:39:02.341" starttime="20161223 14:39:02.313" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Email">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Email}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>3</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.432">${VALUE} = user@mail.com</msg>
+<status endtime="20161223 14:39:02.433" starttime="20161223 14:39:02.349" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:02.435">${Current_Email} = user@mail.com</msg>
+<status endtime="20161223 14:39:02.436" starttime="20161223 14:39:02.344" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Role">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Role}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>4</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:02.452">${VALUE} = RW</msg>
+<status endtime="20161223 14:39:02.453" starttime="20161223 14:39:02.443" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:02.456">${Current_Role} = RW</msg>
+<status endtime="20161223 14:39:02.457" starttime="20161223 14:39:02.438" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="New User Registration">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+<arg>${Current_Repassword}</arg>
+<arg>${Current_Email}</arg>
+<arg>${Current_Role}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Go To">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${REGISTRATION_PAGE_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:02.514">Opening url 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'</msg>
+<status endtime="20161223 14:39:02.872" starttime="20161223 14:39:02.510" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${USERNAME_FIELD}</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:02.881">Typing text 'user1joNEy' into text field 'id=registerForm:username'</msg>
+<status endtime="20161223 14:39:03.160" starttime="20161223 14:39:02.877" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${PASSWORD_FIELD}</arg>
+<arg>${PASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:03.166">Typing password into text field 'id=registerForm:password'</msg>
+<status endtime="20161223 14:39:03.376" starttime="20161223 14:39:03.163" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Password">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>${REPASSWORD_FIELD}</arg>
+<arg>${REPASSWORD}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:03.384">Typing password into text field 'id=registerForm:confirmPassword'</msg>
+<status endtime="20161223 14:39:03.640" starttime="20161223 14:39:03.379" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Input Text">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>${EMAIL_FIELD}</arg>
+<arg>${EMAIL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:03.647">Typing text 'user@mail.com' into text field 'id=registerForm:email'</msg>
+<status endtime="20161223 14:39:03.964" starttime="20161223 14:39:03.643" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Select From List By Value">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>${ROLE_LIST}</arg>
+<arg>${ROLE}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:03.973">Selecting value(s) 'RW' from list 'id=registerForm:role'.</msg>
+<status endtime="20161223 14:39:04.156" starttime="20161223 14:39:03.969" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:04.184">${TITLE} = Registration</msg>
+<status endtime="20161223 14:39:04.185" starttime="20161223 14:39:04.162" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:04.191">${BOOL} = False</msg>
+<status endtime="20161223 14:39:04.192" starttime="20161223 14:39:04.187" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:39:04.228" starttime="20161223 14:39:04.224" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:39:04.522">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Registration.png"&gt;&lt;img src="Registration%20Test-Registration.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:39:04.525" starttime="20161223 14:39:04.231" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:04.526" starttime="20161223 14:39:04.158" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Click Button">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>${CONFIRM_REGISTRATION_BUTTON}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:04.532">Clicking button 'name=registerForm:j_idt25'.</msg>
+<status endtime="20161223 14:39:04.906" starttime="20161223 14:39:04.529" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:04.908" starttime="20161223 14:39:02.460" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:04.910" starttime="20161223 14:39:02.255" status="PASS"></status>
+</kw>
+<kw library="BaseKeywords" name="Check Registration Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="RegistrationTesting" name="Get Expected URL">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_URL}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>5</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:04.925">${VALUE} = http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml</msg>
+<status endtime="20161223 14:39:04.927" starttime="20161223 14:39:04.921" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:04.929">${Current_URL} = http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml</msg>
+<status endtime="20161223 14:39:04.930" starttime="20161223 14:39:04.917" status="PASS"></status>
+</kw>
+<kw library="RegistrationTesting" name="Get Message">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Msg}</var>
+</assign>
+<kw library="RegistrationDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>6</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:04.940">${VALUE} = Password must match confirm password</msg>
+<status endtime="20161223 14:39:04.941" starttime="20161223 14:39:04.936" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:04.943">${Current_Msg} = Password must match confirm password</msg>
+<status endtime="20161223 14:39:04.943" starttime="20161223 14:39:04.932" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Location Should Contain</arg>
+<arg>${Current_URL}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Location Should Contain">
+<doc>Verifies that current URL contains `expected`.</doc>
+<arguments>
+<arg>${Current_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:04.971">Current location contains 'http://s1.web.sumdu.edu.ua:8080/pages/registration.xhtml'.</msg>
+<status endtime="20161223 14:39:04.973" starttime="20161223 14:39:04.950" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:04.974" starttime="20161223 14:39:04.946" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword And Continue On Failure">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Page Should Contain</arg>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<kw library="Selenium2Library" name="Page Should Contain">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>${Current_Msg}</arg>
+<arg>INFO</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:05.064">Current page contains text 'Password must match confirm password'.</msg>
+<status endtime="20161223 14:39:05.066" starttime="20161223 14:39:04.980" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:05.067" starttime="20161223 14:39:04.976" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:05.069" starttime="20161223 14:39:04.912" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Take Screenshot">
+<kw library="Selenium2Library" name="Get Title">
+<doc>Returns title of current page.</doc>
+<assign>
+<var>${TITLE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:05.114">${TITLE} = Registration</msg>
+<status endtime="20161223 14:39:05.114" starttime="20161223 14:39:05.075" status="PASS"></status>
+</kw>
+<kw library="StringHandler" name="Is Error Page">
+<arguments>
+<arg>${TITLE}</arg>
+</arguments>
+<assign>
+<var>${BOOL}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:05.122">${BOOL} = False</msg>
+<status endtime="20161223 14:39:05.122" starttime="20161223 14:39:05.117" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Run Keyword If">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${BOOL}</arg>
+<arg>Click Element</arg>
+<arg>${OPEN_STACK_TRACE_LINK}</arg>
+</arguments>
+<status endtime="20161223 14:39:05.127" starttime="20161223 14:39:05.125" status="PASS"></status>
+</kw>
+<kw library="Selenium2Library" name="Capture Page Screenshot">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<arguments>
+<arg>${TEST NAME}-${TITLE}.png</arg>
+</arguments>
+<msg level="INFO" html="yes" timestamp="20161223 14:39:05.322">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Registration%20Test-Registration.png"&gt;&lt;img src="Registration%20Test-Registration.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status endtime="20161223 14:39:05.323" starttime="20161223 14:39:05.130" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:05.325" starttime="20161223 14:39:05.071" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:05.325" starttime="20161223 14:39:02.253" status="PASS"></status>
+</kw>
+<status endtime="20161223 14:39:05.326" starttime="20161223 14:38:43.307" status="PASS"></status>
+</kw>
+<kw type="teardown" library="Selenium2Library" name="Close Browser">
+<doc>Closes the current browser.</doc>
+<msg level="INFO" timestamp="20161223 14:39:07.750">Got this failure java.net.ConnectException: Connection refused: no further information: localhost/127.0.0.1:60545 during connect (&lt;_realsocket at 0x115 type=client open_count=1 channel=[id: 0x3e9bed6e, 0.0.0.0/0.0.0.0:60671] timeout=1.0&gt;)</msg>
+<status endtime="20161223 14:39:07.756" starttime="20161223 14:39:05.336" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20161223 14:39:07.764" starttime="20161223 14:38:37.443" status="PASS"></status>
+</test>
+<test name="Login Test" id="s1-t2">
+<kw library="Selenium2Library" name="Open Browser">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:07.841">Opening browser 'Chrome' to base url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<status endtime="20161223 14:39:13.220" starttime="20161223 14:39:07.826" status="PASS"></status>
+</kw>
+<kw library="LoginTesting" name="Get Login Dataset Length">
+<assign>
+<var>${NumOfRows}</var>
+</assign>
+<kw library="LoginDataSetReader" name="Get Number Of Filled Rows">
+<assign>
+<var>${LENGTH}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:13.266">${LENGTH} = 3</msg>
+<status endtime="20161223 14:39:13.268" starttime="20161223 14:39:13.230" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:13.272">${NumOfRows} = 3</msg>
+<status endtime="20161223 14:39:13.273" starttime="20161223 14:39:13.224" status="PASS"></status>
+</kw>
+<kw type="for" name="${INDEX} IN RANGE [ 1 | ${NumOfRows} ]">
+<kw type="foritem" name="${INDEX} = 1">
+<kw library="BaseKeywords" name="Login To Account Using Data From Row">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<kw library="LoginTesting" name="Get Login">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Username}</var>
+</assign>
+<kw library="LoginDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:13.305">${VALUE} = unknown</msg>
+<status endtime="20161223 14:39:13.307" starttime="20161223 14:39:13.299" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:13.310">${Current_Username} = unknown</msg>
+<status endtime="20161223 14:39:13.311" starttime="20161223 14:39:13.292" status="PASS"></status>
+</kw>
+<kw library="LoginTesting" name="Get Password">
+<arguments>
+<arg>${INDEX}</arg>
+</arguments>
+<assign>
+<var>${Current_Password}</var>
+</assign>
+<kw library="LoginDataSetReader" name="Get Cell Value">
+<arguments>
+<arg>${INDEX}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${VALUE}</var>
+</assign>
+<msg level="INFO" timestamp="20161223 14:39:13.327">${VALUE} = myPass</msg>
+<status endtime="20161223 14:39:13.328" starttime="20161223 14:39:13.321" status="PASS"></status>
+</kw>
+<msg level="INFO" timestamp="20161223 14:39:13.331">${Current_Password} = myPass</msg>
+<status endtime="20161223 14:39:13.332" starttime="20161223 14:39:13.314" status="PASS"></status>
+</kw>
+<kw library="OperationKeywords" name="Login">
+<arguments>
+<arg>${Current_Username}</arg>
+<arg>${Current_Password}</arg>
+</arguments>
+<kw library="Selenium2Library" name="Go To">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>${LOGIN_PAGE_URL}</arg>
+</arguments>
+<msg level="INFO" timestamp="20161223 14:39:13.347">Opening url 'http://s1.web.sumdu.edu.ua:8080/login.jsp'</msg>
+<msg level="FAIL" timestamp="20161223 14:39:13.402">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=55.0.2883.87)
+  (Driver info: chromedriver=2.25.426923 (0390b88869384d6eb0d5d09729679f934aab9eed),platform=Windows NT 6.1.7601 SP1 x86_64)
+</msg>
+<status endtime="20161223 14:39:13.404" starttime="20161223 14:39:13.342" status="FAIL"></status>
+</kw>
+<status endtime="20161223 14:39:13.409" starttime="20161223 14:39:13.334" status="FAIL"></status>
+</kw>
+<status endtime="20161223 14:39:13.411" starttime="20161223 14:39:13.285" status="FAIL"></status>
+</kw>
+<status endtime="20161223 14:39:13.413" starttime="20161223 14:39:13.283" status="FAIL"></status>
+</kw>
+<status endtime="20161223 14:39:13.414" starttime="20161223 14:39:13.276" status="FAIL"></status>
+</kw>
+<kw type="teardown" library="Selenium2Library" name="Close Browser">
+<doc>Closes the current browser.
